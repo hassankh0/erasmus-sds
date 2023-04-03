@@ -2,19 +2,19 @@ import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
+// import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import "./index.css";
 export default function ImgMediaCard() {
   return (
     <Card sx={{ maxWidth: 300 }}>
-      <CardMedia
+      {/* <CardMedia
         component="img"
         alt="green iguana"
         height="140"
         image="/course.png"
-      />
+      /> */}
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           S.D.S
@@ -25,12 +25,9 @@ export default function ImgMediaCard() {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">ADD</Button>
         <div className='showbtn'>
-         <Button size="small">Show more</Button>
-
+          <Button size="small">DETAILS</Button>
         </div>
-
       </CardActions>
     </Card>
   );
