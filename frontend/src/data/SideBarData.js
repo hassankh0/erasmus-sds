@@ -12,6 +12,7 @@ export const SIDEBAR_DATA = [
   {
     title: "All Courses",
     icon: <MenuBookIcon />,
+    to: "AllCourses",
     hasChildren: false,
    
   },
