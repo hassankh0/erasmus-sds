@@ -1,11 +1,12 @@
-import './App.css';
-import ImgMediaCard from './component/CoursesCard';
-import TableCard from './component/TableCards';
+import React, { Suspense } from "react";
+import Routes from "./router";
+import { LinearProgress } from "@mui/material";
+
 function App() {
   return (
-    <div className="App">
-<TableCard/>
-    </div>
+    <Suspense fallback={<LinearProgress />}>
+      <Routes />
+    </Suspense>
   );
 }
 
