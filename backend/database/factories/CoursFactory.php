@@ -19,7 +19,7 @@ class CoursFactory extends Factory
         return [
             'name' => fake()->word(),
             'code' => fake()->bothify('???-####'),
-            'description' => fake()->text(999),
+            'description' => fake()->text(255),
             'credits' => fake()->numberBetween(0, 6),
             'instructor' => fake()->name(),
         ];
