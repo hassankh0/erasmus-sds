@@ -7,6 +7,7 @@ import './styles.css';
 const homePageContent = (
   <div>
     {/* Navbar */}
+    {/*}
     <nav>
       <ul>
         <li><Link to="/Home">Home</Link></li>
@@ -15,13 +16,14 @@ const homePageContent = (
         <li><Link to="/registration">Registration</Link></li>
       </ul>
     </nav>
+    */}
 
     <section id="home">
       <h1>Welcome to Courses for Erasmus+ Students (CES)</h1>
       <p>At CES, we provide a comprehensive list of courses to help Erasmus+ students choose suitable courses for their learning agreement.</p>
       <p>Our web application offers official course descriptions, comments from other students, and the ability to add comments and materials to facilitate the learning agreement creation process.</p>
     </section>
-
+    <br/>
     <section id="courses">
       <h2>Explore our Courses</h2>
       <p>Click the button below to browse our available courses and find the perfect fit for your learning agreement.</p>
