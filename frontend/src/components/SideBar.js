@@ -86,7 +86,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-export default function SideBar() {
+export default function SideBar({ content }) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -155,7 +155,9 @@ export default function SideBar() {
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
         <Typography paragraph>
-         Home Section
+        <div>
+          {content}
+        </div>
         </Typography>
         
       </Box>
