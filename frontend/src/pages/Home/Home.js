@@ -25,19 +25,19 @@ const homePageContent = (
     <section id="courses">
       <h2>Explore our Courses</h2>
       <p>Click the button below to browse our available courses and find the perfect fit for your learning agreement.</p>
-      <Button to="/AllCourses" className="btn">Browse Courses</Button>
+      <Link to="/AllCourses" className="btn">Browse Courses</Link>
     </section>
 
     <section id="login">
       <h2>Login</h2>
       <p>If you already have an account, you can login here to access your profile and manage your courses.</p>
-      <Button to="/login" className="btn">Login</Button>
+      <Link to="/login" className="btn">Login</Link>
     </section>
 
     <section id="registration">
       <h2>Registration</h2>
       <p>If you're a new user, you can register here to create an account and start exploring our courses.</p>
-      <Button to="/registration" className="btn">Register</Button>
+      <Link to="/registration" className="btn">Register</Link>
     </section>
 
     {/* Footer */}
