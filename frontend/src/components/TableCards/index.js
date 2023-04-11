@@ -1,9 +1,22 @@
 import * as React from 'react';
+import { useState, useEffect } from 'react';
 import ImgMediaCard from '../CoursesCard';
 import "./index.css"
 
+import * as coursServices from "../../services/coursServices";
+
 export default function TableCard() {
-    const courses = [1, 2, 3, 4, 5, 6, 7, 8];
+    const [courses, setCourses] = useState([]);
+    
+    const fetchUniversities = async () => {
+        const data = await coursServices.getCourses();
+        setCourses(data);
+    }
+
+    useEffect(() => {
+        fetchUniversities();
+        console.log(courses)
+    }, []);
 
     return (
         <div className='table'>

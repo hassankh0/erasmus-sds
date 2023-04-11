@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Course(props) {
+function UniversityCard(props) {
     //state
   const [isHovering, setIsHovering] = useState(false);
 
@@ -40,4 +40,4 @@ function Course(props) {
   );
 }
 
-export default Course;
+export default UniversityCard;
