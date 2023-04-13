@@ -5,6 +5,7 @@ import TableCard from "../components/TableCards";
 import Home from "../pages/Home/Home";
 import SideBar from "../components/SideBar";
 import { SIDEBAR_DATA } from "../data/SideBarData";
+import CoursDetail from "../components/CoursDetail";
 // ================================================================
 
 const index = () => {
@@ -15,6 +16,7 @@ const index = () => {
             {/* Public URL */}
             <Route index path="/home" element={<Home />} />
             <Route  path="/AllCourses" element={<TableCard />} />
+            <Route  path="/Cours-Deatils" element={<CoursDetail />} />
             <Route  path="/SideBar" element={<SideBar SIDEBAR_DATA/>} />
 
           </Routes>
