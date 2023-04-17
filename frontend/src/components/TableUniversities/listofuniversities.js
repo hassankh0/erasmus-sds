@@ -26,11 +26,11 @@ export default function ListOfUniversities() {
 
   return <div>
 
-    <div class="flex justify-center bg-gray-100 py-4">
-      <h1 class="text-4xl font-bold text-gray-700 text-center font-serif relative">
+    <div class="flex justify-center bg-dark-100 py-4">
+      <h1 class="text-4xl font-bold text-black text-center font-serif relative">
         List of Courses
         {/* Style du trait */}
-        <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gray-700"></div>
+        <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-black"></div>
       </h1>
     </div>
 

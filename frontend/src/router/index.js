@@ -6,21 +6,25 @@ import Home from "../pages/Home/Home";
 import SideBar from "../components/SideBar";
 import { SIDEBAR_DATA } from "../data/SideBarData";
 import ListOfUniversities from "../components/TableUniversities/listofuniversities";
+import ProfilePage from "../components/ProfilPage/profil";
 // ================================================================
 
 const index = () => {
   return (
     <Router forceRefresh={true}>
-        <Suspense fallback={<LinearProgress />}>
-          <Routes>
-            {/* Public URL */}
-            <Route index path="/home" element={<Home />} />
+      <Suspense fallback={<LinearProgress />}>
+        <Routes>
+          {/* Public URL */}
+          <Route index path="/home" element={<Home />} />
           <Route path="/AllCourses" element={<TableCard />} />
           <Route path="/AllUnis" element={<ListOfUniversities />} />
-            <Route  path="/SideBar" element={<SideBar SIDEBAR_DATA/>} />
+          <Route path="/SideBar" element={<SideBar SIDEBAR_DATA />} />
 
-          </Routes>
-        </Suspense>
+          {/* Private URL */}
+          <Route path="/Profil" element={<ProfilePage />} />
+
+        </Routes>
+      </Suspense>
     </Router>
   );
 };
