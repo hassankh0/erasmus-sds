@@ -18,14 +18,13 @@ const index = () => {
             {/* Public URL */}
             <Route index path="/home" element={<Home />} />
             <Route  path="/AllCourses" element={<TableCard />} />
-            <Route  path="/Cours-Deatils" element={<CoursDetail />} />
-          <Route path="/AllCourses" element={<TableCard />} />
+            <Route  path="/Cours-Details" element={<CoursDetail />} />
           <Route path="/AllUnis" element={<ListOfUniversities />} />
-            <Route  path="/SideBar" element={<SideBar content={Home}/>} />
 
           {/* Private URL */}
           <Route path="/Profil" element={<ProfilePage />} />
 
+          <Route path="*" element={<Home />} />
         </Routes>
       </Suspense>
     </Router>
