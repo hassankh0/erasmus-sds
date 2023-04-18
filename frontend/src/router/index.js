@@ -7,6 +7,7 @@ import SideBar from "../components/SideBar";
 import { SIDEBAR_DATA } from "../data/SideBarData";
 import CoursDetail from "../components/CoursDetail";
 import ListOfUniversities from "../components/TableUniversities/listofuniversities";
+import ProfilePage from "../components/ProfilPage/profil";
 // ================================================================
 
 const index = () => {
@@ -22,8 +23,11 @@ const index = () => {
           <Route path="/AllUnis" element={<ListOfUniversities />} />
             <Route  path="/SideBar" element={<SideBar content={Home}/>} />
 
-          </Routes>
-        </Suspense>
+          {/* Private URL */}
+          <Route path="/Profil" element={<ProfilePage />} />
+
+        </Routes>
+      </Suspense>
     </Router>
   );
 };
