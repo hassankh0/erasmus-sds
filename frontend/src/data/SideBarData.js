@@ -19,12 +19,14 @@ export const SIDEBAR_DATA = [
   {
     title: "My Courses",
     icon: <ShoppingCartIcon />,
+    to:"shopingCart",
     hasChildren: false,
    
   },
   {
     title: "OLA",
     icon: <HandshakeIcon />,
+    to:"OLA",
     hasChildren: false,
   
   },
