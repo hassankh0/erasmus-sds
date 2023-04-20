@@ -1,29 +1,28 @@
 import { Link } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 const Login = () => {
+
+    const navigate = useNavigate();
+
+    const handleOnSubmit = () => {
+        navigate("/home", true);
+    }
+
     return (
         <div class="h-screen md:flex">
-            {/* <div
-                className="relative overflow-hidden md:flex w-1/2 bg-gradient-to-tr from-blue-800 to-purple-700 i justify-around items-center hidden">
-                <img class="object-scale-down h-full w-full bg-cover bg-center " src="./img/pp.jpg" />
-            </div> */}
-
             <div className="flex h-screen w-full items-center justify-center text-white bg-gray-900 bg-cover bg-no-repeat" styles="background-image:url('./img/pp.jpg'); position: absolute; z-index:10;">
-                <span className="text-white text-9xl font-mono ml-10 -mt-80">Politechnika Poznanska</span>
+                <span className="text-white text-center text-6xl font-mono ml-10 -mt-80">Courses for Erasmus+ Students -CES-</span>
                 <div className="wrapper">
                     <ul className="dynamic-txts">
-                        <li><span>login1</span></li>
-                        <li><span>login2</span></li>
-                        <li><span>login3</span></li>
+                        <li><span>Login</span></li>
+                        <li><span>Login</span></li>
+                        <li><span>Login</span></li>
                     </ul>
                 </div>
             </div>
 
-
-
-
             <div class="flex md:w-1/2 justify-center py-10 items-center bg-white">
-                <form class="bg-white">
+                <form class="bg-white" onSubmit={handleOnSubmit}>
                     <h1 class="text-gray-800 font-bold text-2xl mb-1">Hello Again!</h1>
                     <p class="text-sm font-normal text-gray-600 mb-7">Welcome Back</p>
 

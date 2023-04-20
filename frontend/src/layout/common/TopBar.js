@@ -14,6 +14,7 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import AccountMenu from "./AccountMenu";
+import { useNavigate } from "react-router-dom";
 
 const drawerWidth = 280;
 
@@ -36,6 +37,7 @@ const AppBar = styled(MuiAppBar, {
 }));
 
 const TopBar = ({ open, matches, closeDrawer }) => {
+  const navigate = useNavigate();
 
   const [anchorEl, setAnchorEl] = useState(null);
   const menuOpen = Boolean(anchorEl);
@@ -48,6 +50,9 @@ const TopBar = ({ open, matches, closeDrawer }) => {
     setAnchorEl(null);
   };
 
+  const handleLogout = () => {
+    navigate("/login", true);
+  };
 
 
   return (
@@ -90,6 +95,7 @@ const TopBar = ({ open, matches, closeDrawer }) => {
                 open={menuOpen}
                 anchorEl={anchorEl}
                 handleClose={handleClose}
+                handleLogout={handleLogout}
               />
             </React.Fragment>
           </Stack>

@@ -6,8 +6,7 @@ import SideBar from "./components/SideBar";
 function App() {
   return (
     <Suspense fallback={<LinearProgress />}>
-      <SideBar content={
-        <Routes />} />
+        <Routes />
     </Suspense>
   );
 }

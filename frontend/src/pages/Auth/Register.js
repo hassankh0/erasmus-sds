@@ -1,6 +1,14 @@
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+
+    const navigate = useNavigate();
+
+    const handleOnSubmit = () => {
+        navigate("/login", true);
+    }
+
     return (
         <div class="h-screen md:flex">
             {/* <div
@@ -9,21 +17,18 @@ const Register = () => {
             </div> */}
 
             <div className="flex h-screen w-full items-center justify-center text-white bg-gray-900 bg-cover bg-no-repeat" styles="background-image:url('./img/pp.jpg'); position: absolute; z-index:10;">
-                <span className="text-white text-9xl font-mono ml-10 -mt-80">Politechnika Poznanska</span>
+                <span className="text-white text-center text-6xl font-mono ml-10 -mt-80">Courses for Erasmus+ Students -CES-</span>
                 <div className="wrapper">
                     <ul className="dynamic-txts">
-                        <li><span>text1</span></li>
-                        <li><span>text2</span></li>
-                        <li><span>text3</span></li>
+                        <li><span>Register</span></li>
+                        <li><span>Register</span></li>
+                        <li><span>Register</span></li>
                     </ul>
                 </div>
             </div>
 
-
-
-
             <div class="flex md:w-1/2 justify-center py-10 items-center bg-white">
-                <form class="bg-white">
+                <form class="bg-white" onSubmit={handleOnSubmit}>
                     <h1 class="text-gray-800 font-bold text-2xl mb-1">Hello There!</h1>
                     <p class="text-sm font-normal text-gray-600 mb-7">Welcome</p>
                     <div class="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">

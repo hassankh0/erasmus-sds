@@ -18,7 +18,7 @@ const TextAnimation = () => {
         };
 
         // elRef refers to the <span> rendered below
-        typed.current = new Typed(el.current, options);
+        typed.current = new typed(el.current, options);
 
         return () => {
             // Make sure to destroy Typed instance during cleanup
@@ -34,11 +34,6 @@ const TextAnimation = () => {
                 <span style={{ whiteSpace: 'pre' }} ref={el} />
             </div>
 
-            <button onClick={() => typed.current.toggle()}>Toggle</button>
-            <button onClick={() => typed.current.start()}>Start</button>
-            <button onClick={() => typed.current.stop()}>Stop</button>
-            <button onClick={() => typed.current.reset()}>Reset</button>
-            <button onClick={() => typed.current.destroy()}>Destroy</button>
         </div>
     );
 };
