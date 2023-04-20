@@ -9,6 +9,8 @@ import CoursDetail from "../components/CoursDetail";
 import ListOfUniversities from "../components/TableUniversities/listofuniversities";
 import ProfilePage from "../components/ProfilPage/profil";
 import ShopingCart from "../components/ShopingCart";
+import Login from "../pages/Auth/Login";
+import Register from "../pages/Auth/Register";
 // ================================================================
 const SDSApp = lazy(() => import("../layout/SDSApp"));
 const index = () => {
@@ -16,6 +18,8 @@ const index = () => {
     <Router forceRefresh={true}>
         <Suspense fallback={<LinearProgress />}>
           <Routes>
+            <Route path="/Login" element={<Login />} />
+            <Route path="/Register" element={<Register />} />
             {/* Public URL */}
             <Route path="/" element={<SDSApp />}>
             <Route index path="/home" element={<Home />} />
@@ -23,9 +27,7 @@ const index = () => {
             <Route  path="/Cours-Details" element={<CoursDetail />} />
             <Route path="/AllUnis" element={<ListOfUniversities />} />
             <Route path="/shopingCart" element={<ShopingCart />} />
-
-          {/* Private URL */}
-          <Route path="/Profil" element={<ProfilePage />} />
+            <Route path="/Profile" element={<ProfilePage />} />
 
           <Route path="*" element={<Home />} />
           </Route>
