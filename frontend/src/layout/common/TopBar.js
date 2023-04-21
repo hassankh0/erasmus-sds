@@ -15,6 +15,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import AccountMenu from "./AccountMenu";
 import { useNavigate } from "react-router-dom";
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const drawerWidth = 280;
 
@@ -54,6 +55,11 @@ const TopBar = ({ open, matches, closeDrawer }) => {
     navigate("/login", true);
   };
 
+  const handleShopingCart= ()=>{
+    navigate("/shopingCart", true);
+
+  }
+
 
   return (
     <>
@@ -76,7 +82,22 @@ const TopBar = ({ open, matches, closeDrawer }) => {
           <Box sx={{ flex: 1 }} />
           <Stack direction="row" spacing={2} justifyContent="flex-end">
       
-          
+          <IconButton
+              id="shoppingcart-button"
+              // ref={anchorNotificationRef}
+              aria-label="Shopping Cart"
+              // aria-controls={
+                // notificationsOpen ? "notification-menu" : undefined
+              // }
+              aria-haspopup="true"
+        
+              size="large"
+              edge="end"
+              color="inherit"
+              onClick={handleShopingCart}
+            >
+           <ShoppingCartIcon />
+            </IconButton>
             <React.Fragment>
               <IconButton
                 id="account-button"
