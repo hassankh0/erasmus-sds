@@ -26,7 +26,7 @@ export default function ImgMediaCard() {
       </CardContent>
       <CardActions>
         <div className='showbtn'>
-         <Button size="small">DETAILS</Button>
+         <Button size="small" href='/Cours-Details'>DETAILS</Button>
 
         </div>
 

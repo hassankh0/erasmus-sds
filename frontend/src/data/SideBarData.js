@@ -1,6 +1,6 @@
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import HomeIcon from '@mui/icons-material/Home';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import BookIcon from '@mui/icons-material/Book';
 import HandshakeIcon from '@mui/icons-material/Handshake';
 export const SIDEBAR_DATA = [
   {
@@ -18,7 +18,7 @@ export const SIDEBAR_DATA = [
   },
   {
     title: "My Courses",
-    icon: <ShoppingCartIcon />,
+    icon: <BookIcon />,
     to:"shopingCart",
     hasChildren: false,
    

@@ -18,11 +18,13 @@ import './styles.css';
     "title":"Login",
     "text":"If you already have an account, you can login here to access your profile and manage your courses.",
     "Btn":"Login",
+    "link":"/Login"
   },
   {
     "title":"Registration",
     "text":"If you're a new user, you can register here to create an account and start exploring our courses.",
     "Btn":"Register",
+    "link":"/Register"
   },
   {
     "title":"Contact Us",
@@ -47,7 +49,7 @@ import './styles.css';
               </Typography>
             </CardContent>
             <CardActions>
-              <Button size="small">{cardData.Btn}</Button>
+              <Button size="small" href={cardData.link}>{cardData.Btn}</Button>
             </CardActions>
           </Card>
         </Box>
