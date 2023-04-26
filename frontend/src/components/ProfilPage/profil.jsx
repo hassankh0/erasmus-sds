@@ -80,6 +80,7 @@ function ProfilePage() {
                     <input
                       class="border-0 px-3 py-3 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full cursor-not-allowed "
                       placeholder="speudo"
+                      disabled
                     />
                   </div>
                 </div>
@@ -109,6 +110,7 @@ function ProfilePage() {
                     <input
                       class="border-0 px-3 py-3 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full cursor-not-allowed "
                       placeholder="email"
+                      disabled
                     />
                   </div>
                 </div>
@@ -139,6 +141,7 @@ function ProfilePage() {
                       type="text"
                       class="border-0 px-3 py-3 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full cursor-not-allowed "
                       placeholder="firstname"
+                      disabled
                     />
                   </div>
                 </div>
@@ -168,6 +171,7 @@ function ProfilePage() {
                     <input
                       class="border-0 px-3 py-3 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full cursor-not-allowed "
                       placeholder="lastname"
+                      disabled
                     />
                   </div>
                 </div>
@@ -236,6 +240,7 @@ function ProfilePage() {
                           type="text"
                           class="border-0 px-3 py-3 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full cursor-not-allowed"
                           value={address}
+                          disabled
                         />
                       </div>
                     </div>
@@ -265,6 +270,7 @@ function ProfilePage() {
                         <input
                           class="border-0 px-3 py-3 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full cursor-not-allowed"
                           value={city}
+                          disabled
                         />
                       </div>
                     </div>
@@ -295,6 +301,7 @@ function ProfilePage() {
                           type="text"
                           class="border-0 px-3 py-3 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full cursor-not-allowed"
                           value={country}
+                          disabled
                         />
                       </div>
                     </div>
@@ -324,6 +331,7 @@ function ProfilePage() {
                         <input
                           class="border-0 px-3 py-3 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full cursor-not-allowed"
                           value={postalcode}
+                          disabled
                         />
                       </div>
                     </div>
