@@ -6,7 +6,7 @@ import Home from "../pages/Home/Home";
 import CoursDetail from "../components/CoursDetail";
 import ListOfUniversities from "../components/TableUniversities/listofuniversities";
 import ProfilePage from "../components/ProfilPage/profil";
-import ShopingCart from "../components/ShopingCart";
+import CoursesCart from "../components/CoursesCart";
 import Login from "../pages/Auth/Login";
 import Register from "../pages/Auth/Register";
 // ================================================================
@@ -24,7 +24,7 @@ const index = () => {
             <Route  path="/AllCourses" element={<TableCard />} />
             <Route  path="/Cours-Details/:coursId" element={<CoursDetail />} />
             <Route path="/AllUnis" element={<ListOfUniversities />} />
-            <Route path="/shopingCart" element={<ShopingCart />} />
+            <Route path="/shopingCart" element={<CoursesCart />} />
             <Route path="/Profile" element={<ProfilePage />} />
 
           <Route path="*" element={<Home />} />

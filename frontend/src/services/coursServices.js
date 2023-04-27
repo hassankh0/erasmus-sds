@@ -19,3 +19,15 @@ export const getCourse = async (id) => {
         console.error(error);
     }
 }
+
+export const getCoursesOfStudent = async () => {
+    const id = JSON.parse(sessionStorage.getItem("student")).id;
+    console.log(id);
+    try {
+        const response = await axios.get(`${API_URL}/courses/student/${id}`);
+
+        return response.data.courses;
+    } catch (error) {
+        console.error(error);
+    }
+}

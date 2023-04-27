@@ -5,6 +5,7 @@ use App\Http\Controllers\UniversityController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\StudentCoursesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,5 +44,7 @@ Route::middleware(['cors'])->group(function () {
 
     Route::post('/auth',[AuthController::class, "store"]);// Login Student
     Route::post('/register', [StudentController::class, "store"]); // Create Student
+
+    Route::get('/courses/student/{student}',[StudentCoursesController::class, "show"]); // List courses in student cart
 
 });
