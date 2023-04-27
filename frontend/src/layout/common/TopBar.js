@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { styled } from "@mui/material/styles";
-
+import { logout } from "../../services/authServices";
 import {
   Box,
   AppBar as MuiAppBar,
@@ -52,7 +52,8 @@ const TopBar = ({ open, matches, closeDrawer }) => {
   };
 
   const handleLogout = () => {
-    navigate("/login", true);
+    logout();
+    navigate("/login");
   };
 
   const handleShopingCart= ()=>{
