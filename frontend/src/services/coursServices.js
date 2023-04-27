@@ -10,3 +10,12 @@ export const getCourses = async () => {
         console.error(error);
     }
 }
+
+export const getCourse = async (id) => {
+    try {
+        const response = await axios.get(`${API_URL}/cours/${id}`);
+        return response.data.cours;
+    } catch (error) {
+        console.error(error);
+    }
+}

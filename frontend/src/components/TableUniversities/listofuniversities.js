@@ -28,7 +28,7 @@ export default function ListOfUniversities() {
 
 <div class="bg-dark-100 py-4">
   <h1 class="text-4xl font-bold text-black text-center font-serif relative container mx-auto">
-    List of Courses
+    List of Universities
     {/* Style du trait */}
     <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-black"></div>
   </h1>
