@@ -8,21 +8,21 @@ import * as coursServices from "../../services/coursServices";
 export default function TableCard() {
     const [courses, setCourses] = useState([]);
     
-    const fetchUniversities = async () => {
+    const fetchCoursess = async () => {
         const data = await coursServices.getCourses();
         setCourses(data);
     }
 
     useEffect(() => {
-        fetchUniversities();
+        fetchCoursess();
         console.log(courses)
     }, []);
 
     return (
         <div className='table'>
             {courses.map((course) => (
-                <div className='tab' key={course}>
-                    <ImgMediaCard />
+                <div className='tab' key={course.id}>
+                    <ImgMediaCard course={course} />
                 </div>
             ))}
         </div>
