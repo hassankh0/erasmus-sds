@@ -20,10 +20,11 @@ class Cart extends Model
 
     public function student()
     {
-        return $this->belongsTo(Student::class, 'student_id');
+        return $this->belongsTo(Student::class);
     }
 
-    public function courses() {
-        return $this->hasMany(Cours::class);
+    public function course()
+    {
+        return $this->belongsTo(Cours::class);
     }
 }

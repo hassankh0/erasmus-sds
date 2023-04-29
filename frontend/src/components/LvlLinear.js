@@ -18,11 +18,11 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   },
 }));
 
-export default function LvlLinear() {
+export default function LvlLinear({difficulty}) {
     return (
       <Box sx={{ flexGrow: 1 }}>
    
-        <BorderLinearProgress variant="determinate" value={50} />
+        <BorderLinearProgress variant="determinate" value={difficulty} />
       </Box>
     );
   }

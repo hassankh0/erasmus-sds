@@ -20,4 +20,9 @@ class Cours extends Model
         'credits',
         'instructor'
     ];
+
+    public function students()
+    {
+        return $this->belongsToMany(Student::class, 'cart', 'cours_id', 'student_id');
+    }
 }

@@ -4,6 +4,8 @@ use App\Http\Controllers\CoursController;
 use App\Http\Controllers\UniversityController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\StudentCoursesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,9 +38,13 @@ Route::middleware(['cors'])->group(function () {
     Route::delete('/carts/{cart}', [CartController::class, "destroy"]); // Delete Cart
 
     Route::get('/students', [StudentController::class, "index"]); // List Universities
-    Route::post('/students', [StudentController::class, "store"]); // Create Student
     Route::get('/students/{student}', [StudentController::class, "show"]); // Detail of Student
     Route::put('/students/{student}', [StudentController::class, "update"]); // Update Student
     Route::delete('/students/{student}', [StudentController::class, "destroy"]); // Delete Student
+
+    Route::post('/auth',[AuthController::class, "store"]);// Login Student
+    Route::post('/register', [StudentController::class, "store"]); // Create Student
+
+    Route::get('/courses/student/{student}',[StudentCoursesController::class, "show"]); // List courses in student cart
 
 });
