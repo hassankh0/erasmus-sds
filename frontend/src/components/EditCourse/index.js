@@ -1,0 +1,167 @@
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Button, IconButton } from '@mui/material';
+import { ArrowBack } from '@mui/icons-material';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import axios from 'axios';
+import { API_URL } from '../../config/environment';
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+
+
+function EditCourseForm(props) {
+    const { id } = useParams();
+    const [course, setCourse] = useState({
+      name: '',
+      code: '',
+      description: '',
+      credits: '',
+      instructor: ''
+    });
+  
+    useEffect(() => {
+      async function fetchData() {
+        const response = await axios.get(`${API_URL}/cours/${id}`);
+        setCourse(response.data.cours);
+      }
+      fetchData();
+    }, [id]);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    let correct = true;
+    if (!/^[a-zA-Z\s]+$/.test(course.name)) {
+        alert('Invalid course name');
+        correct=false;
+    }
+    if (!/^[a-zA-Z]{3}-\d{4}$/.test(course.code)) {
+        alert('Invalid course code');
+        correct=false;
+    }
+    if (course.description.length > 255) {
+        alert('Course description is too long');
+        correct=false;
+    }
+    const credits = parseInt(course.credits);
+    if (isNaN(credits) || credits < 0 || credits > 6) {
+      alert('Invalid course credits');
+      correct=false;
+    }
+    if (!/^[a-zA-Z\s]+$/.test(course.instructor)) {
+        alert('Invalid course instructor');
+        correct=false;
+    }
+    if (correct) {
+        console.log('Submitted');
+        const newCourse = {
+            name: course.name,
+            code: course.code,
+            description: course.description,
+            credits: course.credits,
+            instructor: course.instructor
+          };
+      try {
+        const response = await axios.put(`${API_URL}/cours/${id}`, newCourse);
+        console.log(response.data);
+        window.location.href = "/TableCourses";
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+        console.log('Not Submitted');
+    }
+    /*console.log(`Course Name: ${courseName}`);
+    console.log(`Course Code: ${courseCode}`);
+    console.log(`Course Description: ${courseDescription}`);
+    console.log(`Course Credits: ${courseCredits}`);
+    console.log(`Course Instructor: ${courseInstructor}`);*/
+  };
+
+  return (
+    <Box sx={{ mt: 4 }}>
+        <IconButton component={Link} to="/TableCourses" edge="start" aria-label="back">
+          <ArrowBack />
+        </IconButton>
+      <h1 className="text-xl font-bold text-gray-900 sm:text-3xl mb-4">Edit Course</h1>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="courseName" class="text-sm text-gray-700">Course Name:</label>
+          <TextField
+            id="courseName"
+            variant="outlined"
+            size="small"
+            value={course.name}
+            onChange={(e) => setCourse({ ...course, name: e.target.value })}
+            fullWidth
+            margin="dense"
+            placeholder={course.name}
+          />
+        </div>
+        <div>
+          <label htmlFor="courseCode" class="text-sm text-gray-700">Course Code:</label>
+          <TextField
+            id="courseCode"
+            variant="outlined"
+            size="small"
+            value={course.code}
+            onChange={(e) => setCourse({ ...course, code: e.target.value })}
+            fullWidth
+            margin="dense"
+            placeholder={course.code}
+          />
+        </div>
+        <div>
+          <label htmlFor="courseDescription" class="text-sm text-gray-700">Course Description:</label>
+          <TextField
+            id="courseDescription"
+            variant="outlined"
+            size="small"
+            value={course.description}
+            onChange={(e) => setCourse({ ...course, description: e.target.value })}
+            fullWidth
+            margin="dense"
+            placeholder={course.description}
+          />
+        </div>
+        <div>
+          <label htmlFor="courseCredits" class="text-sm text-gray-700">Course Credits:</label>
+          <TextField
+            id="courseCredits"
+            variant="outlined"
+            size="small"
+            value={course.credits}
+            onChange={(e) => setCourse({ ...course, credits: e.target.value })}
+            fullWidth
+            margin="dense"
+            placeholder={course.credits}
+          />
+        </div>
+        <div>
+          <label htmlFor="courseInstructor" class="text-sm text-gray-700">Course Instructor:</label>
+          <TextField
+            id="courseInstructor"
+            variant="outlined"
+            size="small"
+            value={course.instructor}
+            onChange={(e) => setCourse({ ...course, instructor: e.target.value })}
+            fullWidth
+            margin="dense"
+            placeholder={course.instructor}
+          />
+        </div>
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          sx={{ mt: 2 }}
+          class="block rounded bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600"
+        >
+          Submit
+        </Button>
+      </form>
+    </Box>
+  );
+}
+
+export default EditCourseForm;
