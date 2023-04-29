@@ -9,6 +9,9 @@ import ProfilePage from "../components/ProfilPage/profil";
 import CoursesCart from "../components/CoursesCart";
 import Login from "../pages/Auth/Login";
 import Register from "../pages/Auth/Register";
+import AddCourse from "../components/AddCourse";
+import TableCourses from "../components/TableCourses";
+import EditCourse from "../components/EditCourse";
 // ================================================================
 const SDSApp = lazy(() => import("../layout/SDSApp"));
 const index = () => {
@@ -26,6 +29,9 @@ const index = () => {
             <Route path="/AllUnis" element={<ListOfUniversities />} />
             <Route path="/shopingCart" element={<CoursesCart />} />
             <Route path="/Profile" element={<ProfilePage />} />
+            <Route path="/Add-Course" element={<AddCourse/>}/>
+            <Route path="/TableCourses" element={<TableCourses/>} />
+            <Route path="/editCourse/:id" element={<EditCourse/>}/>
 
           <Route path="*" element={<Home />} />
           </Route>
