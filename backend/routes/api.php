@@ -46,5 +46,6 @@ Route::middleware(['cors'])->group(function () {
     Route::post('/register', [StudentController::class, "store"]); // Create Student
 
     Route::get('/courses/student/{student}',[StudentCoursesController::class, "show"]); // List courses in student cart
+    Route::delete('/courses/student/{studentId}/{courseId}', [StudentCoursesController::class, "delete"]); // delete a course in student cart
 
 });

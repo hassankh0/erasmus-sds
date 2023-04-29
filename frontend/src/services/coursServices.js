@@ -61,3 +61,14 @@ export const getCoursesOfStudent = async () => {
         console.error(error);
     }
 }
+
+export const removeCoursesOfStudent = async (coursId) => {
+    const studentId = JSON.parse(sessionStorage.getItem("student")).id;
+    try {
+        const response = await axios.delete(`${API_URL}/courses/student/${studentId}/${coursId}`);
+
+        return response.data.course;
+    } catch (error) {
+        console.error(error);
+    }
+}
