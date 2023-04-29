@@ -42,7 +42,7 @@ export default function TableCard() {
         <div>
         <h1 className="text-xl font-bold text-gray-900 sm:text-3xl">Courses</h1>
         <div style={{textAlign: 'right'}}>
-        <Button style={{float: 'right'}} className="text-right" class="block rounded bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600" href='/Add-Course'>Add new Course</Button>  
+        <Button style={{float: 'right'}} className="text-right" className="block rounded bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600" href='/Add-Course'>Add new Course</Button>  
         </div>      
         <Table>
           <TableHead>

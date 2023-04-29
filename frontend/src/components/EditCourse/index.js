@@ -86,7 +86,7 @@ function EditCourseForm(props) {
       <h1 className="text-xl font-bold text-gray-900 sm:text-3xl mb-4">Edit Course</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="courseName" class="text-sm text-gray-700">Course Name:</label>
+          <label htmlFor="courseName" className="text-sm text-gray-700">Course Name:</label>
           <TextField
             id="courseName"
             variant="outlined"
@@ -99,7 +99,7 @@ function EditCourseForm(props) {
           />
         </div>
         <div>
-          <label htmlFor="courseCode" class="text-sm text-gray-700">Course Code:</label>
+          <label htmlFor="courseCode" className="text-sm text-gray-700">Course Code:</label>
           <TextField
             id="courseCode"
             variant="outlined"
@@ -112,7 +112,7 @@ function EditCourseForm(props) {
           />
         </div>
         <div>
-          <label htmlFor="courseDescription" class="text-sm text-gray-700">Course Description:</label>
+          <label htmlFor="courseDescription" className="text-sm text-gray-700">Course Description:</label>
           <TextField
             id="courseDescription"
             variant="outlined"
@@ -125,7 +125,7 @@ function EditCourseForm(props) {
           />
         </div>
         <div>
-          <label htmlFor="courseCredits" class="text-sm text-gray-700">Course Credits:</label>
+          <label htmlFor="courseCredits" className="text-sm text-gray-700">Course Credits:</label>
           <TextField
             id="courseCredits"
             variant="outlined"
@@ -138,7 +138,7 @@ function EditCourseForm(props) {
           />
         </div>
         <div>
-          <label htmlFor="courseInstructor" class="text-sm text-gray-700">Course Instructor:</label>
+          <label htmlFor="courseInstructor" className="text-sm text-gray-700">Course Instructor:</label>
           <TextField
             id="courseInstructor"
             variant="outlined"
@@ -155,7 +155,7 @@ function EditCourseForm(props) {
           variant="contained"
           color="primary"
           sx={{ mt: 2 }}
-          class="block rounded bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600"
+          className="block rounded bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600"
         >
           Submit
         </Button>

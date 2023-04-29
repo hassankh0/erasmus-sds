@@ -12,8 +12,8 @@ function UniversityCard(props) {
       {/* Not HOVERING */}
       <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{props.CourseInfo.name}</h5>
       <p className="font-normal text-gray-700 dark:text-gray-400">qqqqqqqqqqqqqqqqqqqqqqqqsqqssqqs$qs <br /><br /> qqqqqqqqqqqqqqqqqqqqqqqqsqqssqqs$qs <br /><br /> {props.CourseInfo.description}</p>
-      <div class="h-6">
-        <div class="absolute bottom-5 right-8">
+      <div className="h-6">
+        <div className="absolute bottom-5 right-8">
           <p className="font-bold text-white dark:text-white-000">{props.CourseInfo.country}, <span className="font-normal">{props.CourseInfo.city}</span></p>
         </div>
       </div>
