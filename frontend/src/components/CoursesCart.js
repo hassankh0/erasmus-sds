@@ -32,7 +32,7 @@ const ShopingCart = () => {
 
           <div className="mt-8">
             <ul className="space-y-4">
-              {courses.map((cours) => <><CartItem key={Math.random} cours={cours} /></>)}
+              {courses.map((cours) => <><CartItem key={Math.random} cours={cours} fetchCourses={fetchCourses} /></>)}
             </ul>
 
             <div className="mt-8 flex justify-end border-t border-gray-100 pt-8">

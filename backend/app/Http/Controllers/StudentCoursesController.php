@@ -52,8 +52,16 @@ class StudentCoursesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Cours $cours)
+    public function delete($studentId, $courseId)
     {
-        //
+        $record = Cart::where('student_id', $studentId)
+            ->where('cours_id', $courseId)
+            ->firstOrFail();
+
+        $record->delete();
+
+        return response()->json([
+            'message' => 'Record deleted successfully'
+        ], 200);
     }
 }
