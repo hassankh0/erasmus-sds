@@ -34,12 +34,13 @@ export default function CoursDetail() {
   const { coursId } = useParams('coursId');
   const [expanded, setExpanded] = useState(false);
   const [cours, setCourse] = useState();
-  const [comments, setComments] = useState([1, 2, 3, 4, 5]);
+  const [comments, setComments] = useState([]);
 
 
   useEffect(() => {
     getCourse(coursId).then(data => {
       setCourse(data);
+      setComments(data.comments);
     }
     );
 
