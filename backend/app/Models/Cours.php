@@ -25,4 +25,8 @@ class Cours extends Model
     {
         return $this->belongsToMany(Student::class, 'cart', 'cours_id', 'student_id');
     }
+
+    public function comments() {
+        return $this->hasMany(Comment::class);
+    }
 }
