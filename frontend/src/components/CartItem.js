@@ -1,4 +1,11 @@
-function CartItem({cours}) {
+import { removeCoursesOfStudent } from "../services/coursServices";
+
+function CartItem({cours, fetchCourses}) {
+
+    const handleDelete = () => {
+        removeCoursesOfStudent(cours.id).then(()=>fetchCourses());
+    };
+
     return (
         <li className="flex items-center gap-4">
 
@@ -21,7 +28,7 @@ function CartItem({cours}) {
             <div className="flex flex-1 items-center justify-end gap-2">
 
 
-                <button className="text-gray-600 transition hover:text-red-600">
+                <button className="text-gray-600 transition hover:text-red-600" onClick={handleDelete} >
                     <span className="sr-only">Remove item</span>
 
                     <svg

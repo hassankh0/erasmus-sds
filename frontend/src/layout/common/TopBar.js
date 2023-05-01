@@ -16,6 +16,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import AccountMenu from "./AccountMenu";
 import { useNavigate } from "react-router-dom";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { checkLogin } from "../../utils/checkLogin";
 
 const drawerWidth = 280;
 
@@ -56,7 +57,11 @@ const TopBar = ({ open, matches, closeDrawer }) => {
     navigate("/login");
   };
 
-  const handleShopingCart= ()=>{
+  const handleLogin = () => {
+    navigate("/login");
+  };
+
+  const handleShopingCart = () => {
     navigate("/shopingCart", true);
 
   }
@@ -82,23 +87,23 @@ const TopBar = ({ open, matches, closeDrawer }) => {
           </IconButton>
           <Box sx={{ flex: 1 }} />
           <Stack direction="row" spacing={2} justifyContent="flex-end">
-      
-          <IconButton
+
+            {checkLogin() ? <IconButton
               id="shoppingcart-button"
               // ref={anchorNotificationRef}
               aria-label="Shopping Cart"
               // aria-controls={
-                // notificationsOpen ? "notification-menu" : undefined
+              // notificationsOpen ? "notification-menu" : undefined
               // }
               aria-haspopup="true"
-        
+
               size="large"
               edge="end"
               color="inherit"
               onClick={handleShopingCart}
             >
-           <ShoppingCartIcon />
-            </IconButton>
+              <ShoppingCartIcon />
+            </IconButton> : <></>}
             <React.Fragment>
               <IconButton
                 id="account-button"
@@ -118,6 +123,7 @@ const TopBar = ({ open, matches, closeDrawer }) => {
                 anchorEl={anchorEl}
                 handleClose={handleClose}
                 handleLogout={handleLogout}
+                handleLogin={handleLogin}
               />
             </React.Fragment>
           </Stack>

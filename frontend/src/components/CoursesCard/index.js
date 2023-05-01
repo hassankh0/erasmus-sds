@@ -6,10 +6,15 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import "./index.css";
-import {useNavigate, Link} from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { addCoursesToStudent } from '../../services/coursServices';
 
 export default function ImgMediaCard({ course }) {
-const navigate = useNavigate();
+  const navigate = useNavigate();
+
+  const handleAdd = () => {
+    addCoursesToStudent(course.id);
+  }
 
   return (
     <Card sx={{ maxWidth: 300 }}>
@@ -33,7 +38,7 @@ const navigate = useNavigate();
       <CardActions>
         <div className='showbtn'>
           <Button size="small" component={Link} to={`/Cours-Details/${course.id}`} >DETAILS</Button>
-
+          <Button size="small" onClick={handleAdd}  >Add</Button>
         </div>
 
       </CardActions>

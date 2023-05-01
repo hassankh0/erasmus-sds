@@ -17,13 +17,6 @@ export const SIDEBAR_DATA = [
    
   },
   {
-    title: "My Courses",
-    icon: <BookIcon />,
-    to:"shopingCart",
-    hasChildren: false,
-   
-  },
-  {
     title: "OLA",
     icon: <HandshakeIcon />,
     to:"OLA",

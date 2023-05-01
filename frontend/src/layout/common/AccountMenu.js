@@ -1,5 +1,5 @@
 import React from "react";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   AppBar as MuiAppBar,
   Menu,
@@ -9,9 +9,11 @@ import {
 } from "@mui/material";
 
 import PersonIcon from "@mui/icons-material/Person";
+import LoginIcon from "@mui/icons-material/Login";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { checkLogin } from "../../utils/checkLogin";
 
-const AccountMenu = ({ open, anchorEl, handleClose, handleLogout }) => {
+const AccountMenu = ({ open, anchorEl, handleClose, handleLogout, handleLogin }) => {
   return (
     <Menu
       anchorEl={anchorEl}
@@ -55,12 +57,20 @@ const AccountMenu = ({ open, anchorEl, handleClose, handleLogout }) => {
         <ListItemText>Profile</ListItemText>
       </MenuItem>
 
-      <MenuItem onClick={() => handleLogout()}>
-        <ListItemIcon>
-          <LogoutIcon fontSize="small" />
-        </ListItemIcon>
-        <ListItemText>Logout</ListItemText>
-      </MenuItem>
+      {checkLogin() ?
+        <MenuItem onClick={() => handleLogout()}>
+          <ListItemIcon>
+            <LogoutIcon fontSize="small" />
+          </ListItemIcon>
+          <ListItemText>Logout</ListItemText>
+        </MenuItem>
+        :
+        <MenuItem onClick={() => handleLogin()}>
+          <ListItemIcon>
+            <LoginIcon fontSize="small" />
+          </ListItemIcon>
+          <ListItemText>Login</ListItemText>
+        </MenuItem>}
     </Menu>
   );
 };

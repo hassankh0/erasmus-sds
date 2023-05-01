@@ -18,6 +18,8 @@ import Commentaire from './Commentaire';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getCourse } from '../services/coursServices';
+import CommentForm from './CommentForm';
+import { checkLogin } from '../utils/checkLogin';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -34,15 +36,27 @@ export default function CoursDetail() {
   const { coursId } = useParams('coursId');
   const [expanded, setExpanded] = useState(false);
   const [cours, setCourse] = useState();
-  const [comments, setComments] = useState([1, 2, 3, 4, 5]);
+  const [comments, setComments] = useState([]);
+  const [difficulty, setDifficulty] = useState(1);
 
+  const fetchCourse = async () => {
+    await getCourse(coursId).then(data => {
+      setCourse(data);
+      setComments(data.comments);
+      if (data.comments.length > 0) {
+        let rate = 0;
+        data.comments.forEach(comment => {
+          rate += comment.rate;
+        })
+        console.log(rate / data.comments.length);
+        setDifficulty(rate / data.comments.length);
+      }
+    }
+    )
+  }
 
   useEffect(() => {
-    getCourse(coursId).then(data => {
-      setCourse(data);
-    }
-    );
-
+    fetchCourse();
   }, []);
 
   if (!cours) {
@@ -72,7 +86,7 @@ export default function CoursDetail() {
           <CardHeader
             avatar={
               <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                {cours.name.slice(0,2)}
+                {cours.name.slice(0, 2)}
               </Avatar>
             }
 
@@ -93,7 +107,7 @@ export default function CoursDetail() {
                 Difficulty
               </Typography>
               <br />
-              <LvlLinear difficulty={cours.difficulty ? cours.difficulty : 50} />
+              <LvlLinear difficulty={difficulty} />
               <br />
             </Paper>
           </Box>
@@ -135,9 +149,17 @@ export default function CoursDetail() {
           </Collapse>
         </Card>
       </Paper>
+
+      {checkLogin() ?
+        <Paper elevation={3} sx={{ p: 2 }}>
+          <CommentForm fetchCourse={fetchCourse} coursId={cours.id} />
+        </Paper>
+        :
+        <></>}
+
       <Paper elevation={3} sx={{ p: 2 }}>
         {comments.map(comment => (
-          <Commentaire comment={comment} />
+          <Commentaire key={comment.id} comment={comment} />
         ))}
 
       </Paper>
