@@ -9,7 +9,9 @@ import * as coursServices from "../../services/coursServices";
 
 export default function TableCard() {
     const [courses, setCourses] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
     const [deleting, setDeleting] = useState(false);
+    const [filteredCourses, setFilteredCourses] = useState([]);
     
     const fetchUniversities = async () => {
         const data = await coursServices.getCourses();
@@ -20,6 +22,13 @@ export default function TableCard() {
         fetchUniversities();
         console.log(courses)
     }, []);
+
+    useEffect(() => {
+      const filteredCourses = courses.filter((course) =>
+        course.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setFilteredCourses(filteredCourses);
+    }, [searchTerm, courses]);
 
     const handleEdit = (id) => {
         console.log(`Editing course with id ${id}`);
@@ -43,7 +52,25 @@ export default function TableCard() {
         <h1 className="text-xl font-bold text-gray-900 sm:text-3xl">Courses</h1>
         <div style={{textAlign: 'right'}}>
         <Button style={{float: 'right'}} className="text-right" className="block rounded bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600" href='/Add-Course'>Add new Course</Button>  
+        <input 
+          type="text" 
+          placeholder="Search Courses..." 
+          value={searchTerm} 
+          onChange={(e) => setSearchTerm(e.target.value)} 
+          style={{
+            width: '80%',
+            height: '40px',
+            border: '1px solid #ccc',
+            borderRadius: '4px',
+            paddingLeft: '10px',
+            fontSize: '16px',
+            margin: '20px auto',
+            display: 'block',
+            textAlign: 'center'
+          }}
+        />
         </div>      
+        
         <Table>
           <TableHead>
             <TableRow>
@@ -57,7 +84,7 @@ export default function TableCard() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {courses.map((course) => (
+            {filteredCourses.map((course) => (
               <TableRow key={course.id}>
                 <TableCell>{course.name}</TableCell>
                 <TableCell>{course.description}</TableCell>
