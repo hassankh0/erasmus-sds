@@ -5,14 +5,16 @@ import { Button } from '@mui/material';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import SendIcon from '@mui/icons-material/Send';
+import { addCommentToCourse } from '../services/coursServices';
 
-function CommentForm() {
+function CommentForm({ coursId, fetchCourse }) {
     const [text, setText] = useState("");
     const [rating, setRating] = useState(0);
 
     const handleComment = () => {
-        console.log(text);
-        console.log(rating);
+        if (text && rating > 0) {
+            addCommentToCourse(coursId, text, rating * 20).then(() => { fetchCourse(); setText(""); setRating(0); });
+        }
     }
 
     return (
@@ -23,7 +25,7 @@ function CommentForm() {
                 multiline
                 fullWidth
                 rows={4}
-                defaultValue={text}
+                value={text}
                 onChange={(e) => { setText(e.target.value) }}
             />
             <Box sx={{ bgcolor: '#f5f5f5', padding: '16px' }}>
