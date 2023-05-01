@@ -49,7 +49,7 @@ class CoursController extends Controller
     public function show(Cours $cours)
     {
         // Cours Detail
-        $coursDetail = Cours::find($cours->id);
+        $coursDetail = Cours::with('comments.student')->find($cours->id);
         if (!$coursDetail) {
             return response()->json([
                 'message' => 'Cours Not Found.'
