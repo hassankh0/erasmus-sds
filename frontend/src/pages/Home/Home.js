@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import SideBar from '../../components/SideBar';
 import Box from '@mui/material/Box';
@@ -8,7 +8,9 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import './styles.css';
- const data = [
+import { checkLogin } from '../../utils/checkLogin';
+
+ const loggedoutdata = [
   {
     "title":"Explore our Courses",
     "text":"Click the button below to browse our available courses and find the perfect fit for your learning agreement.",
@@ -33,8 +35,25 @@ import './styles.css';
   },
  ]
 
+const loggedindata = [
+  {
+    "title": "Explore our Courses",
+    "text": "Click the button below to browse our available courses and find the perfect fit for your learning agreement.",
+    "Btn": "Browse Courses",
+  },
+  {
+    "title": "Contact Us",
+    "text": "If you have any questions or feedback, please feel free to contact us at sds@put.pl",
+    "Btn": "Contact US",
+  },
+]
 
  const Home = () => {
+
+   const [data, setData] = useState(loggedoutdata);
+
+   useEffect(() => { setData(checkLogin() ? loggedindata : loggedoutdata)},[])
+
   return (
     <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
       {data.map((cardData, index) => (
