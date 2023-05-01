@@ -50,20 +50,22 @@ const AccountMenu = ({ open, anchorEl, handleClose, handleLogout, handleLogin })
       transformOrigin={{ horizontal: "right", vertical: "top" }}
       anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
     >
-      <MenuItem component={Link} to="profile">
-        <ListItemIcon>
-          <PersonIcon fontSize="small" />
-        </ListItemIcon>
-        <ListItemText>Profile</ListItemText>
-      </MenuItem>
 
       {checkLogin() ?
-        <MenuItem onClick={() => handleLogout()}>
-          <ListItemIcon>
-            <LogoutIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText>Logout</ListItemText>
-        </MenuItem>
+        <>
+          <MenuItem component={Link} to="profile">
+            <ListItemIcon>
+              <PersonIcon fontSize="small" />
+            </ListItemIcon>
+            <ListItemText>Profile</ListItemText>
+          </MenuItem>
+          <MenuItem onClick={() => handleLogout()}>
+            <ListItemIcon>
+              <LogoutIcon fontSize="small" />
+            </ListItemIcon>
+            <ListItemText>Logout</ListItemText>
+          </MenuItem>
+        </>
         :
         <MenuItem onClick={() => handleLogin()}>
           <ListItemIcon>
