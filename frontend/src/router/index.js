@@ -12,6 +12,7 @@ import Register from "../pages/Auth/Register";
 import AddCourse from "../components/AddCourse";
 import TableCourses from "../components/TableCourses";
 import EditCourse from "../components/EditCourse";
+import ForgotPassword from "../pages/Auth/ForgotPassword";
 // ================================================================
 const SDSApp = lazy(() => import("../layout/SDSApp"));
 const index = () => {
@@ -21,6 +22,7 @@ const index = () => {
           <Routes>
             <Route path="/Login" element={<Login />} />
             <Route path="/Register" element={<Register />} />
+            <Route path="/ForgotPassword" element={<ForgotPassword/>}/>
             {/* Public URL */}
             <Route path="/" element={<SDSApp />}>
             <Route index path="/home" element={<Home />} />
