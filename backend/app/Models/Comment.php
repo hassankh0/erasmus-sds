@@ -12,7 +12,8 @@ class Comment extends Model
     protected $fillable = [
         'content',
         'student_id',
-        'cours_id'
+        'cours_id',
+        'rate'
     ];
 
     public function student()

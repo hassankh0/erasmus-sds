@@ -6,6 +6,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\StudentCoursesController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,4 +49,5 @@ Route::middleware(['cors'])->group(function () {
     Route::get('/courses/student/{student}',[StudentCoursesController::class, "show"]); // List courses in student cart
     Route::delete('/courses/student/{studentId}/{courseId}', [StudentCoursesController::class, "delete"]); // delete a course in student cart
 
+    Route::post('/comment',[CommentController::class,"store"]); // Add Comment
 });

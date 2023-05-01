@@ -85,3 +85,18 @@ export const removeCoursesOfStudent = async (coursId) => {
         console.error(error);
     }
 }
+
+export const addCommentToCourse = async (courseId, commentText, commentRating) => {
+    const studentId = JSON.parse(sessionStorage.getItem("student")).id;
+    try {
+        const response = await axios.post(`${API_URL}/comment`, {
+            student_id: studentId,
+            cours_id: courseId,
+            content: commentText,
+            rate: commentRating
+        });
+        return response.status;
+    } catch (error) {
+        console.error(error);
+    }
+}
