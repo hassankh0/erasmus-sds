@@ -18,6 +18,8 @@ import Commentaire from './Commentaire';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getCourse } from '../services/coursServices';
+import CommentForm from './CommentForm';
+import { checkLogin } from '../utils/checkLogin';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -73,7 +75,7 @@ export default function CoursDetail() {
           <CardHeader
             avatar={
               <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                {cours.name.slice(0,2)}
+                {cours.name.slice(0, 2)}
               </Avatar>
             }
 
@@ -136,6 +138,14 @@ export default function CoursDetail() {
           </Collapse>
         </Card>
       </Paper>
+
+      {checkLogin() ?
+        <Paper elevation={3} sx={{ p: 2 }}>
+          <CommentForm />
+        </Paper>
+        :
+        <></>}
+
       <Paper elevation={3} sx={{ p: 2 }}>
         {comments.map(comment => (
           <Commentaire comment={comment} />
