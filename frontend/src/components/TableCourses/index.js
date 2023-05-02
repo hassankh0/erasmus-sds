@@ -94,7 +94,7 @@ export default function TableCard() {
                   <Button
                     variant="outlined"
                     color="primary"
-                    href='/Cours-Details'
+                    href={`/Cours-Details/${course.id}`}
                     onClick={() => console.log(`Details for course with id ${course.id}`)}
                   >
                     Details

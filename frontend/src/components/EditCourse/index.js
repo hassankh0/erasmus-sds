@@ -31,11 +31,11 @@ function EditCourseForm(props) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     let correct = true;
-    if (!/^[a-zA-Z\s]+$/.test(course.name)) {
+    if (!(course.name)) {
         alert('Invalid course name');
         correct=false;
     }
-    if (!/^[a-zA-Z]{3}-\d{4}$/.test(course.code)) {
+    if (!(course.code)) {
         alert('Invalid course code');
         correct=false;
     }
@@ -48,7 +48,7 @@ function EditCourseForm(props) {
       alert('Invalid course credits');
       correct=false;
     }
-    if (!/^[a-zA-Z\s]+$/.test(course.instructor)) {
+    if(!(course.instructor)) {
         alert('Invalid course instructor');
         correct=false;
     }
