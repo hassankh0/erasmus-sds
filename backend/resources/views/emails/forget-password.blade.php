@@ -1,15 +1,17 @@
 @extends('layouts.email')
 
 @section('content')
-    <p>Hello,</p>
+    <p>Dear {{ $username }},</p>
 
-    <p>You recently requested to reset your password. To complete the process, please use the following code:</p>
+    <p>We are writing to inform you that your password has been successfully reset. Your new password is:</p>
 
-    <h2>{{ $code }}</h2>
+    <p><strong>{{ $newPassword }}</strong></p>
 
-    <p>If you did not request a password reset, please ignore this email.</p>
+    <p>Please keep this password confidential and do not share it with anyone.</p>
 
-    <p>Thank you,</p>
+    <p>If you did not request a password reset, please contact our support team immediately so that we can investigate the matter.</p>
 
-    <p>The {{ config('app.name') }} Team</p>
+    <p>Thank you for using our services.</p>
+
+    <p>Best regards,<br> - CES - </p>
 @endsection

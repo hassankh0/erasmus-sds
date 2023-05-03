@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\ForgetPasswordEmail;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -21,18 +22,28 @@ class ForgetPasswordController extends Controller
      */
     public function store(Request $request)
     {
-        $email = $request->email;
-        $code = fake()->numberBetween(10000, 99999);
-
         try {
-            Mail::to($email)->send(new ForgetPasswordEmail($code));
+            $email = $request->email;
+            $user = Student::where('email', $request->email)->first();
+
+            if (!$user) {
+                return response()->json(['message' => 'Student not found'], 404);
+            }
+
+            $code = "password";
+            $user->password = $code;
+
+            $user->save();
+
+            Mail::to($email)->send(new ForgetPasswordEmail($user->username,$code));
+
             return response()->json([
-                'code' => $code
+                'message' => "Password Successfully changed!"
             ], 200);
         } catch (\Exception $e) {
             // Return Json Response
             return response()->json([
-                'message' => "Something went really wrong!"
+                'message' => "Something really wrong!"
             ], 500);
         }
     }

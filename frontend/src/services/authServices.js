@@ -23,3 +23,15 @@ export const login = async (username, password) => {
 export const logout = () => {
     sessionStorage.removeItem("student");
 }
+
+export const ForgotPassword = async (email) => {
+    try {
+        const response = await axios.post(`${API_URL}/forgetpwd`, {
+            email: email
+        })
+
+        return response.status === 200;
+    } catch (error) {
+        return null;
+    }
+}
