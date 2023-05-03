@@ -7,6 +7,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\StudentCoursesController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ForgetPasswordController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,4 +51,6 @@ Route::middleware(['cors'])->group(function () {
     Route::delete('/courses/student/{studentId}/{courseId}', [StudentCoursesController::class, "delete"]); // delete a course in student cart
 
     Route::post('/comment',[CommentController::class,"store"]); // Add Comment
+
+    Route::post('/forgetpwd',[ForgetPasswordController::class,"store"]);
 });
