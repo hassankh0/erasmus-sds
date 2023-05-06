@@ -41,7 +41,9 @@ const index = () => {
           <Route path="*" element={<Home />} />
           </Route>
              <Route path="/admin" element={<SDSAdminApp/>}>
-             {/* <Route path="/adminHome" element={<AdminPage/>}/> */}
+             <Route path="/admin/Add-Course" element={<AddCourse/>}/>
+            <Route path="/admin/TableCourses" element={<TableCourses/>} />
+            <Route path="/admin/editCourse/:id" element={<EditCourse/>}/>
 
           </Route>
 
