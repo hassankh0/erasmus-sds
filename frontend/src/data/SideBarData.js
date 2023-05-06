@@ -1,7 +1,8 @@
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import HomeIcon from '@mui/icons-material/Home';
-import BookIcon from '@mui/icons-material/Book';
+import GroupIcon from '@mui/icons-material/Group';
 import HandshakeIcon from '@mui/icons-material/Handshake';
+import SchoolIcon from '@mui/icons-material/School';
 export const SIDEBAR_DATA = [
   {
     title: "Home",
@@ -20,6 +21,29 @@ export const SIDEBAR_DATA = [
     title: "OLA",
     icon: <HandshakeIcon />,
     to:"OLA",
+    hasChildren: false,
+  
+  },
+
+];
+export const SIDEBAR_DATA_ADMIN = [
+  {
+    title: "User",
+    icon: <GroupIcon />,
+    to: "user",
+    hasChildren: false,
+  },
+  {
+    title: "Courses",
+    icon: <MenuBookIcon />,
+    to: "TableCourses",
+    hasChildren: false,
+   
+  },
+  {
+    title: "University",
+    icon: <SchoolIcon />,
+    to:"AllUnis",
     hasChildren: false,
   
   },

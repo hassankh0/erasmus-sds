@@ -13,8 +13,10 @@ import AddCourse from "../components/AddCourse";
 import TableCourses from "../components/TableCourses";
 import EditCourse from "../components/EditCourse";
 import ForgotPassword from "../pages/Auth/ForgotPassword";
+import AdminPage from "../pages/Admin/admin";
 // ================================================================
 const SDSApp = lazy(() => import("../layout/SDSApp"));
+const SDSAdminApp= lazy(()=> import("../layout/SDSAdminApp"));
 const index = () => {
   return (
     <Router forceRefresh={true}>
@@ -23,6 +25,7 @@ const index = () => {
             <Route path="/Login" element={<Login />} />
             <Route path="/Register" element={<Register />} />
             <Route path="/ForgotPassword" element={<ForgotPassword/>}/>
+
             {/* Public URL */}
             <Route path="/" element={<SDSApp />}>
             <Route index path="/home" element={<Home />} />
@@ -34,9 +37,14 @@ const index = () => {
             <Route path="/Add-Course" element={<AddCourse/>}/>
             <Route path="/TableCourses" element={<TableCourses/>} />
             <Route path="/editCourse/:id" element={<EditCourse/>}/>
-
+      
           <Route path="*" element={<Home />} />
           </Route>
+             <Route path="/admin" element={<SDSAdminApp/>}>
+             {/* <Route path="/adminHome" element={<AdminPage/>}/> */}
+
+          </Route>
+
         </Routes>
       </Suspense>
     </Router>
