@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import * as coursServices from "../services/coursServices"
 import CartItem from './CartItem'
+import LearningAgreement from './PDFPages/PDFPages'
 
 const ShopingCart = () => {
   const [courses, setCourses] = useState([]);
@@ -53,8 +54,9 @@ const ShopingCart = () => {
                     href="#"
                     className="block rounded bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600"
                   >
-                    Checkout
+                    <LearningAgreement />
                   </a>
+
                 </div>
               </div>
             </div>

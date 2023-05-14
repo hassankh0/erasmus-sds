@@ -13,6 +13,7 @@ import AddCourse from "../components/AddCourse";
 import TableCourses from "../components/TableCourses";
 import EditCourse from "../components/EditCourse";
 import ForgotPassword from "../pages/Auth/ForgotPassword";
+import PDF_Generator from "../components/PDFPages/PDFPages";
 // ================================================================
 const SDSApp = lazy(() => import("../layout/SDSApp"));
 const index = () => {
@@ -34,6 +35,7 @@ const index = () => {
             <Route path="/Add-Course" element={<AddCourse/>}/>
             <Route path="/TableCourses" element={<TableCourses/>} />
             <Route path="/editCourse/:id" element={<EditCourse/>}/>
+            <Route path="/pdf_generator" element={<PDF_Generator/>}/>
 
           <Route path="*" element={<Home />} />
           </Route>
