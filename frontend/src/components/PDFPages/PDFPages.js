@@ -72,8 +72,8 @@ export default function ListOfUniversities() {
             <View style={{ backgroundColor: "#f2f2f2", borderBottomWidth: 1, borderStyle: "solid", borderBottomColor: "#000000"}}></View>
               {courses.map((course, index) => (
                 <View key={index} style={{flexDirection: "row", justifyContent: "flex-start"}}>
-                  <Text style={{ fontSize:10, textAlign: "left", width: 300}}>{course.name}</Text>
-                  <Text style={{ fontSize:10, textAlign: "left", width: 170}}>{course.code}</Text>
+                  <Text style={{ fontSize:10, textAlign: "left", width: 285}}>{course.name}</Text>
+                  <Text style={{ fontSize:10, textAlign: "left", width: 185}}>{course.code}</Text>
                   <Text style={{ fontSize:10, textAlign: "right", width: 100}}>{course.ects}</Text>
                 </View>
               ))}
