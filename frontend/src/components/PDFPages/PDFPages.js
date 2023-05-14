@@ -1,17 +1,14 @@
 import { PDFDownloadLink, Document, Page, Text, View } from '@react-pdf/renderer';
 
 //Export du composant
-export default function ListOfUniversities() {
+export default function OLA() {
 
 
   //state
 
   //mock user
-  const user = {
-    name: 'Jean Dupont',
-    email: 'jean.dupont@example.com',
-    university: 'Université de Paris'
-  };
+  const student = JSON.parse(sessionStorage.getItem("student"));
+
   
   //mock course
   const courses = [
@@ -22,7 +19,7 @@ export default function ListOfUniversities() {
 
   //comportement 
 
-  const LearningAgreement = ({ user, courses }) => {
+  const LearningAgreement = () => {
     // Créer un nouveau document PDF
     const OLA = (
       <Document>
@@ -36,21 +33,21 @@ export default function ListOfUniversities() {
               <View>
                 <Text>
                   <Text style={{ fontSize: 15, marginBottom: 2, marginRight: 4 }}>Name : </Text>
-                  <Text style={{ fontSize: 12}}> {user.name}</Text>
+                  <Text style={{ fontSize: 12}}> {student.lastname} {student.firstname}</Text>
                 </Text>
               </View>
 
               <View>
                 <Text>
                   <Text style={{ fontSize: 15, marginBottom: 2, marginRight: 4 }}>Email : </Text>
-                  <Text style={{ fontSize: 12}}>{user.email}</Text>
+                  <Text style={{ fontSize: 12}}>{student.email}</Text>
                 </Text>
               </View>
 
               <View>
                 <Text>
-                  <Text style={{ fontSize: 15, marginBottom: 2, marginRight: 4 }}>University : </Text>
-                  <Text style={{ fontSize: 12}} >{user.university}</Text>
+                  <Text style={{ fontSize: 15, marginBottom: 2, marginRight: 4 }}>Nationality : </Text>
+                  <Text style={{ fontSize: 12}} >{student.nationality}</Text>
                 </Text>
               </View>
             </View>
@@ -98,7 +95,7 @@ export default function ListOfUniversities() {
     //affichage
     return (
       <div>
-        <LearningAgreement user={user} courses={courses} />
+        <LearningAgreement  />
       </div>
     );
 }
