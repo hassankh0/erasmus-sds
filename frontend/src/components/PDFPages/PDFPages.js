@@ -1,7 +1,7 @@
 import { PDFDownloadLink, Document, Page, Text, View } from '@react-pdf/renderer';
 
 //Export du composant
-export default function OLA() {
+export default function LearningAgreement(props) {
 
 
   //state
@@ -11,15 +11,15 @@ export default function OLA() {
 
   
   //mock course
-  const courses = [
-    { name: 'Introduction à la psychologie', code: 'PSY101', ects: 6 },
-    { name: 'Histoire de l\'art', code: 'ART102', ects: 3 },
-    { name: 'Sociologie de la communication', code: 'SOC205', ects: 6 }
-  ];
+  // const courses = [
+  //   { name: 'Introduction à la psychologie', code: 'PSY101', ects: 6 },
+  //   { name: 'Histoire de l\'art', code: 'ART102', ects: 3 },
+  //   { name: 'Sociologie de la communication', code: 'SOC205', ects: 6 }
+  // ];
 
   //comportement 
 
-  const LearningAgreement = () => {
+  const CreateLearningAgreement = () => {
     // Créer un nouveau document PDF
     const OLA = (
       <Document>
@@ -67,11 +67,11 @@ export default function OLA() {
             </View>
 
             <View style={{ backgroundColor: "#f2f2f2", borderBottomWidth: 1, borderStyle: "solid", borderBottomColor: "#000000"}}></View>
-              {courses.map((course, index) => (
+              {props.CourseInfo.map((course, index) => (
                 <View key={index} style={{flexDirection: "row", justifyContent: "flex-start"}}>
                   <Text style={{ fontSize:10, textAlign: "left", width: 285}}>{course.name}</Text>
                   <Text style={{ fontSize:10, textAlign: "left", width: 185}}>{course.code}</Text>
-                  <Text style={{ fontSize:10, textAlign: "right", width: 100}}>{course.ects}</Text>
+                  <Text style={{ fontSize:10, textAlign: "right", width: 100}}>{course.credits}</Text>
                 </View>
               ))}
             
@@ -95,7 +95,7 @@ export default function OLA() {
     //affichage
     return (
       <div>
-        <LearningAgreement  />
+        {CreateLearningAgreement()}
       </div>
     );
 }
