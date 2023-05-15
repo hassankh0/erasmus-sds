@@ -13,11 +13,11 @@ class StudentController extends Controller
     public function index()
     {
         // All Student
-        $studentes = Student::all();
+        $students = Student::all();
 
         // Return Json Response
         return response()->json([
-            'studentes' => $studentes
+            'students' => $students
         ], 200);
     }
 

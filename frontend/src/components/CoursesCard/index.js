@@ -31,10 +31,13 @@ export default function ImgMediaCard({ course }) {
         <Typography gutterBottom variant="p" component="p">
           {course.code}
         </Typography>
-        <Typography variant="" color="text.secondary">
-          {course.description}
+        <div className='paragraph'>
+        <Typography variant="body2" color="text.secondary">
+          {course.description.split()}
         </Typography>
+        </div>
       </CardContent>
+
       <CardActions>
         <div className='showbtn'>
           <Button size="small" component={Link} to={`/Cours-Details/${course.id}`} >DETAILS</Button>
@@ -42,6 +45,8 @@ export default function ImgMediaCard({ course }) {
         </div>
 
       </CardActions>
+      
     </Card>
+    
   );
 }

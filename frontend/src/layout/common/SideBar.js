@@ -45,13 +45,14 @@ const SideBar = ({ open, matches, closeDrawer }) => {
           justifyContent: "space-between",
           backgroundColor: "rgba(0, 0, 0, 0.04)",
           minHeight: { xs: "70px" },
+          padding:"inherit",
         }}
       >
         <img
           alt="ERASMUS PLATFORM"
           title="Logo"
           src={logo}
-          style={{ width: "15rem", heigh: "4rem" }}
+          style={{ width: "Full", heigh: "5rem" }}
         />
        
       </DrawerHeader>

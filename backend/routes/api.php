@@ -39,7 +39,8 @@ Route::middleware(['cors'])->group(function () {
     Route::get('/carts/{cart}', [CartController::class, "show"]); // Detail of Cart
     Route::delete('/carts/{cart}', [CartController::class, "destroy"]); // Delete Cart
 
-    Route::get('/students', [StudentController::class, "index"]); // List Universities
+    Route::get('/students', [StudentController::class, "index"]); // List Students
+    Route::post('/students', [StudentController::class, "store"]); // Create Student
     Route::get('/students/{student}', [StudentController::class, "show"]); // Detail of Student
     Route::put('/students/{student}', [StudentController::class, "update"]); // Update Student
     Route::delete('/students/{student}', [StudentController::class, "destroy"]); // Delete Student
