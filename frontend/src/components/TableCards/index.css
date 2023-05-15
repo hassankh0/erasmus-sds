@@ -1,9 +1,7 @@
 .table{
-    display: inline-flex;
+    display: flex;
     flex-wrap: wrap;
-    white-space: nowrap;
     justify-content: center;
-    margin: auto;
 }
 .tab{
 margin-left: 1rem;

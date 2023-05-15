@@ -13,8 +13,14 @@ import AddCourse from "../components/AddCourse";
 import TableCourses from "../components/TableCourses";
 import EditCourse from "../components/EditCourse";
 import ForgotPassword from "../pages/Auth/ForgotPassword";
+
+import AddStudent from "../components/AddStudent";
+import TableStudents from "../components/TableStudent";
+import EditStudent from "../components/EditStudent";
+
 import AdminPage from "../pages/Admin/admin";
 import PDF_Generator from "../components/PDFPages/PDFPages";
+
 
 // ================================================================
 const SDSApp = lazy(() => import("../layout/SDSApp"));
@@ -39,7 +45,12 @@ const index = () => {
             <Route path="/Add-Course" element={<AddCourse/>}/>
             <Route path="/TableCourses" element={<TableCourses/>} />
             <Route path="/editCourse/:id" element={<EditCourse/>}/>
+            <Route path="/AddStudent" element={<AddStudent/>}/>
+            <Route path="/TableStudents" element={<TableStudents/>} />
+            <Route path="/editStudent/:id" element={<EditStudent/>}/>
+
             <Route path="/pdf_generator" element={<PDF_Generator/>}/>
+
           <Route path="*" element={<Home />} />
           </Route>
              <Route path="/admin" element={<SDSAdminApp/>}>

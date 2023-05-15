@@ -21,10 +21,7 @@ function AddCourseForm(props) {
         alert('Invalid course name');
         correct=false;
     }
-    if (!/^[a-zA-Z]{3}-\d{4}$/.test(courseCode)) {
-        alert('Invalid course code');
-        correct=false;
-    }
+
     if (courseDescription.length > 255) {
         alert('Course description is too long');
         correct=false;
