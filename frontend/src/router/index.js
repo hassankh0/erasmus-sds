@@ -13,11 +13,18 @@ import AddCourse from "../components/AddCourse";
 import TableCourses from "../components/TableCourses";
 import EditCourse from "../components/EditCourse";
 import ForgotPassword from "../pages/Auth/ForgotPassword";
+
 import AddStudent from "../components/AddStudent";
 import TableStudents from "../components/TableStudent";
 import EditStudent from "../components/EditStudent";
+
+import AdminPage from "../pages/Admin/admin";
+import PDF_Generator from "../components/PDFPages/PDFPages";
+
+
 // ================================================================
 const SDSApp = lazy(() => import("../layout/SDSApp"));
+const SDSAdminApp= lazy(()=> import("../layout/SDSAdminApp"));
 const index = () => {
   return (
     <Router forceRefresh={true}>
@@ -26,6 +33,7 @@ const index = () => {
             <Route path="/Login" element={<Login />} />
             <Route path="/Register" element={<Register />} />
             <Route path="/ForgotPassword" element={<ForgotPassword/>}/>
+
             {/* Public URL */}
             <Route path="/" element={<SDSApp />}>
             <Route index path="/home" element={<Home />} />
@@ -40,8 +48,18 @@ const index = () => {
             <Route path="/AddStudent" element={<AddStudent/>}/>
             <Route path="/TableStudents" element={<TableStudents/>} />
             <Route path="/editStudent/:id" element={<EditStudent/>}/>
+
+            <Route path="/pdf_generator" element={<PDF_Generator/>}/>
+
           <Route path="*" element={<Home />} />
           </Route>
+             <Route path="/admin" element={<SDSAdminApp/>}>
+             <Route path="/admin/Add-Course" element={<AddCourse/>}/>
+            <Route path="/admin/TableCourses" element={<TableCourses/>} />
+            <Route path="/admin/editCourse/:id" element={<EditCourse/>}/>
+
+          </Route>
+
         </Routes>
       </Suspense>
     </Router>
