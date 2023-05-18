@@ -64,11 +64,15 @@ export default function ImgMediaCard({ course }) {
           <Button size="small" component={Link} to={`/Cours-Details/${course.id}`} >DETAILS</Button>
           {checkLogin() ? <Button size="small" onClick={handleAdd}  >Add</Button>:<></>}
 
-        <div >
+          <div >
             {showNotification && (
-                <p className="text-green-500">The course has been added to the cart</p>
-            )}
-        </div>
+                    <div className="fixed inset-0 flex items-end justify-end z-50">
+                        <div className="bg-white w-64 p-4 rounded shadow border-4  border-gray-100">
+                            <h2 className="text-lg text-blue-500 mb-4">The course has been added to the cart</h2>
+                        </div>
+                    </div>
+                )}
+            </div>
 
         </div>
 

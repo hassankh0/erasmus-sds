@@ -43,10 +43,10 @@ function PasswordPage() {
         setNewPassword(newPassword);
         setNewPasswordConfirm(newPasswordConfirm)
 
-        if (oldPassword != currentPassword) {
+        if (oldPassword !== currentPassword) {
             setError("Please check the old password");
         }
-        else if (newPassword != newPasswordConfirm){
+        else if (newPassword !== newPasswordConfirm){
             setError("The two passwords must be identical");
         }
         else {
@@ -64,7 +64,7 @@ function PasswordPage() {
         if (showNotification) {
           const timer = setTimeout(() => {
             setShowNotification(false);
-          }, 5000);
+          }, 2000);
     
           return () => {
             clearTimeout(timer);
@@ -90,7 +90,11 @@ function PasswordPage() {
 
             <div >
             {showNotification && (
-                    <p className="text-green-500">The password has been successfully changed</p>
+                    <div className="fixed inset-0 flex items-center justify-center z-50">
+                        <div className="bg-gray-100 w-64 p-4 rounded shadow border-4 ">
+                            <h2 className="text-lg text-green-600 font-bold mb-4">Password has been change</h2>
+                        </div>
+                    </div>
                 )}
             </div>
 
