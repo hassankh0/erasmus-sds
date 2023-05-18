@@ -51,7 +51,7 @@ export default function TableCard() {
         <div>
         <h1 className="text-xl font-bold text-gray-900 sm:text-3xl">Courses</h1>
         <div style={{textAlign: 'right'}}>
-        <Button style={{float: 'right'}} className="text-right block rounded bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600" href='/Add-Course'>Add new Course</Button>  
+        <Button style={{float: 'right'}} className="text-right block rounded bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600" href='/admin/Add-Course'>Add new Course</Button>  
         <input 
           type="text" 
           placeholder="Search Courses..." 
@@ -94,14 +94,14 @@ export default function TableCard() {
                   <Button
                     variant="outlined"
                     color="primary"
-                    href={`/Cours-Details/${course.id}`}
+                    href={`/admin/Cours-Details/${course.id}`}
                     onClick={() => console.log(`Details for course with id ${course.id}`)}
                   >
                     Details
                   </Button>
                 </TableCell>
                 <TableCell>
-                <Link to={`/editCourse/${course.id}`}>
+                <Link to={`/admin/editCourse/${course.id}`}>
                 <Button
                 variant="outlined"
                 color="primary"

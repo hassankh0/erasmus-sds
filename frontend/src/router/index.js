@@ -42,9 +42,9 @@ const index = () => {
             <Route path="/AllUnis" element={<ListOfUniversities />} />
             <Route path="/shopingCart" element={<CoursesCart />} />
             <Route path="/Profile" element={<ProfilePage />} />
-            <Route path="/Add-Course" element={<AddCourse/>}/>
+            {/* <Route path="/Add-Course" element={<AddCourse/>}/>
             <Route path="/TableCourses" element={<TableCourses/>} />
-            <Route path="/editCourse/:id" element={<EditCourse/>}/>
+            <Route path="/editCourse/:id" element={<EditCourse/>}/> */}
             <Route path="/AddStudent" element={<AddStudent/>}/>
             <Route path="/TableStudents" element={<TableStudents/>} />
             <Route path="/editStudent/:id" element={<EditStudent/>}/>

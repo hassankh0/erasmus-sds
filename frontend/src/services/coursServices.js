@@ -22,8 +22,8 @@ export const getCourse = async (id) => {
 export const addCourse = async (data) => {
     try {
         const response = await axios.post(`${API_URL}/cours`, data);
-        console.table(response.data.course);
-        return response.data.course;
+        console.table(response.data);
+        return response.data;
     } catch (error) {
         console.error(error);
     }
