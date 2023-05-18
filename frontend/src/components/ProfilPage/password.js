@@ -102,13 +102,13 @@ function PasswordPage() {
             {editModal  && 
 
             <div className="fixed inset-0 flex items-center justify-center z-50">
-                <div className="bg-gray-100 w-64 p-4 rounded shadow border-4 ">
-                <h2 className="text-lg font-bold mb-4">Password Change</h2>
+                <div className="bg-gray-50 w-64 rounded shadow border-2 ">
+                <h2 className="text-lg font-bold mb-4 bg-blue-600 text-white rounded p-2">Password Change</h2>
 
                 <form onSubmit={handleSubmitModal}>
                     
                 
-                <div className="mb-4">
+                <div className="mb-4 px-2">
                         <label htmlFor="oldPassword" className="block mb-1">
                             Old Password
                         </label>
@@ -122,7 +122,7 @@ function PasswordPage() {
                         />
                     </div>
 
-                    <div className="mb-4">
+                    <div className="mb-4 px-2">
                         <label htmlFor="newPassword" className="block mb-1">
                             New password
                         </label>
@@ -136,7 +136,7 @@ function PasswordPage() {
                         />
                     </div>
 
-                    <div className="mb-4">
+                    <div className="mb-4 px-2">
                         <label htmlFor="confirmPassword" className="block mb-1">
                             Comfirm possword
                         </label>
@@ -145,14 +145,14 @@ function PasswordPage() {
                         id="confirmPassword"
                         
                         onChange={(e) => setNewPasswordConfirm(e.target.value)}
-                        className="border border-gray-300 rounded px-2 py-1 w-full"
+                        className="border border-gray-300 rounded px-2 py-1 w-full "
                         required
                         />
                     </div>
                     {error && <p className="text-red-700 mb-4">{error}</p>}
 
                     <button
-                    className="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded mt-4"
+                    className="bg-green-600 hover:bg-green-500 text-white py-2 px-4 rounded mt-4"
                     type="submit"
                     >
                     Validate
@@ -160,7 +160,7 @@ function PasswordPage() {
 
 
                 <button
-                    className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded mt-4"
+                    className="bg-red-600 hover:bg-red-500 text-white py-2 px-4 rounded mt-4"
                     onClick={handleClickModal}
                 >
                     Cancel
