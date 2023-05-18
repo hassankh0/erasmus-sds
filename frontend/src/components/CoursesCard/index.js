@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import "./index.css";
 import { useNavigate, Link } from "react-router-dom";
 import { addCoursesToStudent } from '../../services/coursServices';
+import {checkLogin} from '../../utils/checkLogin';
 
 export default function ImgMediaCard({ course }) {
   const navigate = useNavigate();
@@ -41,7 +42,7 @@ export default function ImgMediaCard({ course }) {
       <CardActions>
         <div className='showbtn'>
           <Button size="small" component={Link} to={`/Cours-Details/${course.id}`} >DETAILS</Button>
-          <Button size="small" onClick={handleAdd}  >Add</Button>
+          {checkLogin() ? <Button size="small" onClick={handleAdd}  >Add</Button>:<></>}
         </div>
 
       </CardActions>
