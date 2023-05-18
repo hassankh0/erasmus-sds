@@ -66,9 +66,9 @@ export default function ImgMediaCard({ course }) {
 
           <div >
             {showNotification && (
-                    <div className="fixed inset-0 flex items-end justify-end z-50">
+                    <div className="fixed inset-0 flex items-center justify-center z-50">
                         <div className="bg-white w-64 p-4 rounded shadow border-4  border-gray-100">
-                            <h2 className="text-lg text-blue-500 mb-4">The course has been added to the cart</h2>
+                            <h2 className="text-lg text-blue-500 mb-4 text-center">The course has been added to the cart</h2>
                         </div>
                     </div>
                 )}

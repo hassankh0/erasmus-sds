@@ -92,7 +92,7 @@ function PasswordPage() {
             {showNotification && (
                     <div className="fixed inset-0 flex items-center justify-center z-50">
                         <div className="bg-gray-100 w-64 p-4 rounded shadow border-4 ">
-                            <h2 className="text-lg text-green-600 font-bold mb-4">Password has been change</h2>
+                            <h2 className="text-lg text-green-600">Password has been change</h2>
                         </div>
                     </div>
                 )}
