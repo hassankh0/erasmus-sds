@@ -30,20 +30,20 @@ export const SIDEBAR_DATA_ADMIN = [
   {
     title: "User",
     icon: <GroupIcon />,
-    to: "user",
+    to: "/admin/TableStudents",
     hasChildren: false,
   },
   {
     title: "Courses",
     icon: <MenuBookIcon />,
-    to: "TableCourses",
+    to: "/admin/TableCourses",
     hasChildren: false,
    
   },
   {
     title: "University",
     icon: <SchoolIcon />,
-    to:"AllUnis",
+    to:"/admin/AllUnis",
     hasChildren: false,
   
   },

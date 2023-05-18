@@ -78,7 +78,6 @@ export default function TableCard() {
               <TableCell>Description</TableCell>
               <TableCell>Credits</TableCell>
               <TableCell>Instructor</TableCell>
-              <TableCell>Details</TableCell>
               <TableCell>Edit</TableCell>
               <TableCell>Delete</TableCell>
             </TableRow>
@@ -90,16 +89,6 @@ export default function TableCard() {
                 <TableCell>{course.description}</TableCell>
                 <TableCell>{course.credits}</TableCell>
                 <TableCell>{course.instructor}</TableCell>
-                <TableCell>
-                  <Button
-                    variant="outlined"
-                    color="primary"
-                    href={`/admin/Cours-Details/${course.id}`}
-                    onClick={() => console.log(`Details for course with id ${course.id}`)}
-                  >
-                    Details
-                  </Button>
-                </TableCell>
                 <TableCell>
                 <Link to={`/admin/editCourse/${course.id}`}>
                 <Button

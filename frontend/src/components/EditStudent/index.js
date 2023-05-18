@@ -44,7 +44,7 @@ function EditStudent(props) {
             try {
                 const response = await axios.put(`${API_URL}/students/${id}`, newStudent);
                 console.log(response.data);
-                window.location.href = "/TableStudents";
+                window.location.href = "/admin/TableStudents";
             } catch (error) {
                 console.error(error);
             }
@@ -55,7 +55,7 @@ function EditStudent(props) {
 
     return (
         <Box sx={{ mt: 4 }}>
-            <IconButton component={Link} to="/TableStudents" edge="start" aria-label="back">
+            <IconButton component={Link} to="/admin/TableStudents" edge="start" aria-label="back">
                 <ArrowBack />
             </IconButton>
             <h1 className="text-xl font-bold text-gray-900 sm:text-3xl mb-4">Edit Student</h1>
