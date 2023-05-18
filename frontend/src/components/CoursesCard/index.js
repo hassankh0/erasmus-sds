@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState, useEffect } from "react";
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -10,11 +10,31 @@ import { useNavigate, Link } from "react-router-dom";
 import { addCoursesToStudent } from '../../services/coursServices';
 import {checkLogin} from '../../utils/checkLogin';
 
+
 export default function ImgMediaCard({ course }) {
   const navigate = useNavigate();
 
+  //Notification
+  const [showNotification, setShowNotification] = useState(false);
+
+  //Comportement
+          
+  //Notification effect
+  useEffect(() => {
+      if (showNotification) {
+        const timer = setTimeout(() => {
+          setShowNotification(false);
+        }, 2000);
+            
+        return () => {
+          clearTimeout(timer);
+        };
+      }
+    }, [showNotification]);
+      
   const handleAdd = () => {
     addCoursesToStudent(course.id);
+    setShowNotification(true);
   }
 
   return (
@@ -43,6 +63,13 @@ export default function ImgMediaCard({ course }) {
         <div className='showbtn'>
           <Button size="small" component={Link} to={`/Cours-Details/${course.id}`} >DETAILS</Button>
           {checkLogin() ? <Button size="small" onClick={handleAdd}  >Add</Button>:<></>}
+
+        <div >
+            {showNotification && (
+                <p className="text-green-500">The course has been added to the cart</p>
+            )}
+        </div>
+
         </div>
 
       </CardActions>
