@@ -109,8 +109,8 @@ function PasswordPage() {
                     
                 
                 <div className="mb-4 px-2">
-                        <label htmlFor="oldPassword" className="block mb-1">
-                            Old Password
+                        <label htmlFor="oldPassword" className="block mb-1 text-sm text-bold">
+                            OLD PASSWORD
                         </label>
                         <input
                         type="password"
@@ -123,8 +123,8 @@ function PasswordPage() {
                     </div>
 
                     <div className="mb-4 px-2">
-                        <label htmlFor="newPassword" className="block mb-1">
-                            New password
+                        <label htmlFor="newPassword" className="block mb-1 text-sm text-bold">
+                            NEW PASSWORD
                         </label>
                         <input
                         type="password"
@@ -137,8 +137,8 @@ function PasswordPage() {
                     </div>
 
                     <div className="mb-4 px-2">
-                        <label htmlFor="confirmPassword" className="block mb-1">
-                            Comfirm possword
+                        <label htmlFor="confirmPassword" className="block mb-1 text-sm text-bold">
+                            CONFIRM PASSWORD
                         </label>
                         <input
                         type="password"
