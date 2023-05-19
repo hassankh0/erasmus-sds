@@ -1,6 +1,13 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\CoursController;
+use App\Http\Controllers\UniversityController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\StudentCoursesController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ForgetPasswordController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +21,37 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware(['cors'])->group(function () {
+    Route::get('/cours', [CoursController::class, "index"]); // List Courses
+    Route::post('/cours', [CoursController::class, "store"]); // Create Cours
+    Route::get('/cours/{cours}', [CoursController::class, "show"]); // Detail of Cours
+    Route::put('/cours/{cours}', [CoursController::class, "update"]); // Update Cours
+    Route::delete('/cours/{cours}', [CoursController::class, "destroy"]); // Delete Cours
+
+    Route::get('/universities', [UniversityController::class, "index"]); // List Universities
+    Route::post('/universities', [UniversityController::class, "store"]); // Create University
+    Route::get('/universities/{university}', [UniversityController::class, "show"]); // Detail of University
+    Route::put('/universities/{university}', [UniversityController::class, "update"]); // Update University
+    Route::delete('/universities/{university}', [UniversityController::class, "destroy"]); // Delete University
+
+    Route::get('/carts', [CartController::class, "index"]); // List Carts
+    Route::post('/carts', [CartController::class, "store"]); // Create Cart
+    Route::get('/carts/{cart}', [CartController::class, "show"]); // Detail of Cart
+    Route::delete('/carts/{cart}', [CartController::class, "destroy"]); // Delete Cart
+
+    Route::get('/students', [StudentController::class, "index"]); // List Students
+    Route::post('/students', [StudentController::class, "store"]); // Create Student
+    Route::get('/students/{student}', [StudentController::class, "show"]); // Detail of Student
+    Route::put('/students/{student}', [StudentController::class, "update"]); // Update Student
+    Route::delete('/students/{student}', [StudentController::class, "destroy"]); // Delete Student
+
+    Route::post('/auth',[AuthController::class, "store"]);// Login Student
+    Route::post('/register', [StudentController::class, "store"]); // Create Student
+
+    Route::get('/courses/student/{student}',[StudentCoursesController::class, "show"]); // List courses in student cart
+    Route::delete('/courses/student/{studentId}/{courseId}', [StudentCoursesController::class, "delete"]); // delete a course in student cart
+
+    Route::post('/comment',[CommentController::class,"store"]); // Add Comment
+
+    Route::post('/forgetpwd',[ForgetPasswordController::class,"store"]);
 });
