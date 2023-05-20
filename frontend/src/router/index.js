@@ -20,7 +20,7 @@ import EditStudent from "../components/EditStudent";
 
 import AdminPage from "../pages/Admin/admin";
 import PDF_Generator from "../components/PDFPages/PDFPages";
-
+import Notifications from "../layout/Notifications";
 
 // ================================================================
 const SDSApp = lazy(() => import("../layout/SDSApp"));
@@ -54,6 +54,7 @@ const index = () => {
             <Route path="/admin/TableStudents" element={<TableStudents />} />
             <Route path="/admin/editStudent/:id" element={<EditStudent />} />
             <Route path="/admin/editCourse/:id" element={<EditCourse />} />
+            <Route path="/admin/Notifications/" element={<Notifications/>}/>
 
           </Route>
 

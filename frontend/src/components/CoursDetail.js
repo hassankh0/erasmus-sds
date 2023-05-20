@@ -67,6 +67,15 @@ export default function CoursDetail() {
     setExpanded(!expanded);
   };
 
+  const handleCommentDelete = (commentId) => {
+    // Filter out the comment with the given commentId
+    const updatedComments = comments.filter((comment) => comment.id !== commentId);
+
+    
+    // Update the comments state with the updated comments array
+    setComments(updatedComments);
+  };
+
   return (
     <Box
       sx={{
@@ -159,7 +168,7 @@ export default function CoursDetail() {
 
       <Paper elevation={3} sx={{ p: 2 }}>
         {comments.map(comment => (
-          <Commentaire key={comment.id} comment={comment} />
+          <Commentaire key={comment.id} course={cours.id} comment={comment} onDelete={handleCommentDelete} />
         ))}
 
       </Paper>
