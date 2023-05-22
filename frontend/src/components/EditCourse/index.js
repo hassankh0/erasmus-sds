@@ -80,7 +80,7 @@ function EditCourseForm(props) {
 
   return (
     <Box sx={{ mt: 4 }}>
-        <IconButton component={Link} to="/TableCourses" edge="start" aria-label="back">
+        <IconButton component={Link} to="/admin/TableCourses" edge="start" aria-label="back">
           <ArrowBack />
         </IconButton>
       <h1 className="text-xl font-bold text-gray-900 sm:text-3xl mb-4">Edit Course</h1>
@@ -156,6 +156,7 @@ function EditCourseForm(props) {
           color="primary"
           sx={{ mt: 2 }}
           className="block rounded bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600"
+          href='/admin/TableCourses'
         >
           Submit
         </Button>

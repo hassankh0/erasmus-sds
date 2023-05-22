@@ -142,6 +142,7 @@ function AddStudent(props) {
           color="primary"
           sx={{ mt: 2 }}
           className="block rounded bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600"
+          href='/admin/TableStudents'
         >
           Submit
         </Button>

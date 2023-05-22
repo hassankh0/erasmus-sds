@@ -4,7 +4,7 @@ import ImgMediaCard from '../CoursesCard';
 import { Button } from '@mui/material';
 import {Table, TableHead, TableCell, TableBody, TableRow} from '@mui/material';
 import "./index.css";
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import * as studentServices from "../../services/userServices";
 export default function TableStudents() {
     const [students, setStudents] = useState([]);
@@ -50,7 +50,7 @@ export default function TableStudents() {
         <div>
         <h1 className="text-xl font-bold text-gray-900 sm:text-3xl">Students</h1>
         <div style={{textAlign: 'right'}}>
-        <Button style={{float: 'right'}} className="text-right block rounded bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600" href='/AddStudent'>Add new Student</Button>  
+        <Button style={{float: 'right'}} className="text-right block rounded bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600" href='/admin/AddStudent'>Add new Student</Button>  
         <input 
           type="text" 
           placeholder="Search Students..." 
@@ -92,7 +92,7 @@ export default function TableStudents() {
                 <TableCell>{students.email}</TableCell>
                 <TableCell>{students.nationality}</TableCell>
                 <TableCell>
-                <Link to={`/editStudent/${students.id}`}>
+                <Link to={`admin/editStudent/${students.id}`}>
                 <Button
                 variant="outlined"
                 color="primary"
