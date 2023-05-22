@@ -10,19 +10,21 @@ export const getStudents = async () => {
 }
 export const deleteStudent = async (studentId) => {
     try {
-      const response = await axios.delete(`${API_URL}/students/${studentId}`);
-      console.log(response.data); // Optional: Log the response data
-      return response.data; // Optional: Return the response data if needed
+        const response = await axios.delete(`${API_URL}/students/${studentId}`);
+        console.log(response.data); // Optional: Log the response data
+        return response.data; // Optional: Return the response data if needed
     } catch (error) {
-      console.error(error);
+        console.error(error);
     }
-  };
-  
-export const updateStudent = async (email, phone) => {
+};
+
+export const updateStudent = async (email = null, phone = null, password = null) => {
     try {
         let student = JSON.parse(sessionStorage.getItem("student"));
-        student.email = email;
-        student.phone = phone;
+        student.email = email || student.email;
+        student.phone = phone || student.phone;
+        student.password = password || student.password;
+
         const response = await axios.put(`${API_URL}/students/${student.id}`, {
             firstname: student.firstname,
             lastname: student.lastname,
