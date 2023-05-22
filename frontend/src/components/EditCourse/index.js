@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button, IconButton } from '@mui/material';
 import { ArrowBack } from '@mui/icons-material';
 import Box from '@mui/material/Box';
@@ -11,6 +11,7 @@ import { useParams } from 'react-router-dom';
 
 
 function EditCourseForm(props) {
+  const navigate = useNavigate();
     const { id } = useParams();
     const [course, setCourse] = useState({
       name: '',
@@ -30,30 +31,6 @@ function EditCourseForm(props) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    let correct = true;
-    if (!(course.name)) {
-        alert('Invalid course name');
-        correct=false;
-    }
-    if (!(course.code)) {
-        alert('Invalid course code');
-        correct=false;
-    }
-    if (course.description.length > 255) {
-        alert('Course description is too long');
-        correct=false;
-    }
-    const credits = parseInt(course.credits);
-    if (isNaN(credits) || credits < 0 || credits > 6) {
-      alert('Invalid course credits');
-      correct=false;
-    }
-    if(!(course.instructor)) {
-        alert('Invalid course instructor');
-        correct=false;
-    }
-    if (correct) {
-        console.log('Submitted');
         const newCourse = {
             name: course.name,
             code: course.code,
@@ -64,18 +41,10 @@ function EditCourseForm(props) {
       try {
         const response = await axios.put(`${API_URL}/cours/${id}`, newCourse);
         console.log(response.data);
-        window.location.href = "/TableCourses";
+        navigate("/admin/TableCourses");
       } catch (error) {
         console.error(error);
       }
-    } else {
-        console.log('Not Submitted');
-    }
-    /*console.log(`Course Name: ${courseName}`);
-    console.log(`Course Code: ${courseCode}`);
-    console.log(`Course Description: ${courseDescription}`);
-    console.log(`Course Credits: ${courseCredits}`);
-    console.log(`Course Instructor: ${courseInstructor}`);*/
   };
 
   return (

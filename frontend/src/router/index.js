@@ -64,7 +64,7 @@ const index = () => {
             <Route
               path="/admin/TableStudents/admin/editStudent/:id"
               element={<EditStudent />}
-            />
+            /
           </Route>
         </Routes>
       </Suspense>

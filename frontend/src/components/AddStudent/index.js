@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button, IconButton } from '@mui/material';
 import { ArrowBack } from '@mui/icons-material';
 import Box from '@mui/material/Box';
@@ -8,6 +8,7 @@ import axios from 'axios';
 import { API_URL } from '../../config/environment';
 
 function AddStudent(props) {
+  const navigate = useNavigate();
   const [Firstname, setfirstname] = useState('');
   const [Lastname, setlastname] = useState('');
   const [Username, setusername] = useState('');
@@ -36,7 +37,7 @@ function AddStudent(props) {
         const response = await axios.post(`${API_URL}/students`, newStudent);
         alert("Student successfully added!");
         console.log(response.data);
-        window.location.href = "/TableStudents";
+        navigate("/admin/TableStudents");
         } catch (error) {
         console.error(error);
         }
@@ -47,7 +48,7 @@ function AddStudent(props) {
 
   return (
     <Box sx={{ mt: 4 }}>
-        <IconButton component={Link} to="/TableStudents" edge="start" aria-label="back">
+        <IconButton component={Link} to="/admin/TableStudents" edge="start" aria-label="back">
           <ArrowBack />
         </IconButton>
       <h1 className="text-xl font-bold text-gray-900 sm:text-3xl mb-4">Add a new Student</h1>

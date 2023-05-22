@@ -92,7 +92,7 @@ export default function TableStudents() {
                 <TableCell>{students.email}</TableCell>
                 <TableCell>{students.nationality}</TableCell>
                 <TableCell>
-                <Link to={`admin/editStudent/${students.id}`}>
+                <Link to={`/admin/editStudent/${students.id}`}>
                 <Button
                 variant="outlined"
                 color="primary"

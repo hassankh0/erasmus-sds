@@ -44,7 +44,7 @@ function EditStudent(props) {
             try {
                 const response = await axios.put(`${API_URL}/students/${id}`, newStudent);
                 console.log(response.data);
-                window.location.href = "/TableStudents";
+                window.location.href = "/admin/TableStudents";
             } catch (error) {
                 console.error(error);
             }
