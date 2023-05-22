@@ -1,21 +1,24 @@
 import React, { useState } from "react";
 import { updateStudent } from "../../services/userServices";
+import PasswordPage from "./password";
 
 
 function ProfilePage() {
   //State
+    //info User
   const student = JSON.parse(sessionStorage.getItem("student"));
-
+    
+    //New info
   const [email, setEmail] = useState(student.email);
   const [phone, setPhone] = useState(student.phone);
   const [newEmail, setNewEmail] = useState(student.email);
   const [newPhone, setNewPhone] = useState(student.phone);
-  // const [country, setCountry] = useState("USA");
-  // const [postalcode, setPostalcode] = useState("56-541");
 
-
-
+    //Edit Open
   const [edit, setEdit] = useState(false);
+
+      //Notification
+      const [showNotification, setShowNotification] = useState(false);
 
   //Comportement
 
@@ -34,6 +37,7 @@ function ProfilePage() {
     }
   }
 
+
   return (
     //Affichage
     //Profil card
@@ -43,13 +47,8 @@ function ProfilePage() {
         <div className="rounded-t bg-white mb-0 px-6 py-6">
           <div className="text-center flex justify-between">
             <h6 className="text-blueGray-700 text-xl font-bold">My account</h6>
-            <div className="flex">
-              <button className="bg-blue-500 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none mr-1">
-                View my OLA
-              </button>
-              {/* <button className="bg-blue-500 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none mr-1 ">
-                Settings
-              </button> */}
+            <div className="flex flex-col">
+              <PasswordPage />
             </div>
           </div>
         </div>
@@ -271,67 +270,6 @@ function ProfilePage() {
                     </div>
                   </div>
                 </div>
-                {/* <div className="w-full lg:w-4/12 px-4">
-                  <div className="relative w-full mb-3">
-                    <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2">
-                      Country
-                    </label>
-                    <div className="flex">
-                      <span className="inline-flex items-center px-3 text-sm text-blue-900 bg-blue-200 border border-r-0 border-blue-300 rounded-l-md dark:bg-blue-600 dark:text-white dark:border-blue-600">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          strokeWidth="1.5"
-                          stroke="currentColor"
-                          className="w-6 h-6"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M20.893 13.393l-1.135-1.135a2.252 2.252 0 01-.421-.585l-1.08-2.16a.414.414 0 00-.663-.107.827.827 0 01-.812.21l-1.273-.363a.89.89 0 00-.738 1.595l.587.39c.59.395.674 1.23.172 1.732l-.2.2c-.212.212-.33.498-.33.796v.41c0 .409-.11.809-.32 1.158l-1.315 2.191a2.11 2.11 0 01-1.81 1.025 1.055 1.055 0 01-1.055-1.055v-1.172c0-.92-.56-1.747-1.414-2.089l-.655-.261a2.25 2.25 0 01-1.383-2.46l.007-.042a2.25 2.25 0 01.29-.787l.09-.15a2.25 2.25 0 012.37-1.048l1.178.236a1.125 1.125 0 001.302-.795l.208-.73a1.125 1.125 0 00-.578-1.315l-.665-.332-.091.091a2.25 2.25 0 01-1.591.659h-.18c-.249 0-.487.1-.662.274a.931.931 0 01-1.458-1.137l1.411-2.353a2.25 2.25 0 00.286-.76m11.928 9.869A9 9 0 008.965 3.525m11.928 9.868A9 9 0 118.965 3.525"
-                          />
-                        </svg>
-                      </span>
-                      <input
-                        type="text"
-                        className="border-0 px-3 py-3 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full cursor-not-allowed"
-                        value={country}
-                        disabled
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="w-full lg:w-4/12 px-4">
-                  <div className="relative w-full mb-3">
-                    <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2">
-                      Postal Code
-                    </label>
-                    <div className="flex">
-                      <span className="inline-flex items-center px-3 text-sm text-blue-900 bg-blue-200 border border-r-0 border-blue-300 rounded-l-md dark:bg-blue-600 dark:text-white dark:border-blue-600">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          strokeWidth="1.5"
-                          stroke="currentColor"
-                          className="w-6 h-6"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z"
-                          />
-                        </svg>
-                      </span>
-                      <input
-                        className="border-0 px-3 py-3 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full cursor-not-allowed"
-                        value={postalcode}
-                        disabled
-                      />
-                    </div>
-                  </div>
-                </div> */}
               </div>
             </div>
           )}
@@ -434,69 +372,7 @@ function ProfilePage() {
                       </div>
                     </div>
                   </div>
-                  {/* <div className="w-full lg:w-4/12 px-4">
-                    <div className="relative w-full mb-3">
-                      <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2">
-                        Country
-                      </label>
-                      <div className="flex">
-                        <span className="inline-flex items-center px-3 text-sm text-blue-900 bg-blue-200 border border-r-0 border-blue-300 rounded-l-md dark:bg-blue-600 dark:text-white dark:border-blue-600">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth="1.5"
-                            stroke="currentColor"
-                            className="w-6 h-6"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M20.893 13.393l-1.135-1.135a2.252 2.252 0 01-.421-.585l-1.08-2.16a.414.414 0 00-.663-.107.827.827 0 01-.812.21l-1.273-.363a.89.89 0 00-.738 1.595l.587.39c.59.395.674 1.23.172 1.732l-.2.2c-.212.212-.33.498-.33.796v.41c0 .409-.11.809-.32 1.158l-1.315 2.191a2.11 2.11 0 01-1.81 1.025 1.055 1.055 0 01-1.055-1.055v-1.172c0-.92-.56-1.747-1.414-2.089l-.655-.261a2.25 2.25 0 01-1.383-2.46l.007-.042a2.25 2.25 0 01.29-.787l.09-.15a2.25 2.25 0 012.37-1.048l1.178.236a1.125 1.125 0 001.302-.795l.208-.73a1.125 1.125 0 00-.578-1.315l-.665-.332-.091.091a2.25 2.25 0 01-1.591.659h-.18c-.249 0-.487.1-.662.274a.931.931 0 01-1.458-1.137l1.411-2.353a2.25 2.25 0 00.286-.76m11.928 9.869A9 9 0 008.965 3.525m11.928 9.868A9 9 0 118.965 3.525"
-                            />
-                          </svg>
-                        </span>
-                        <input
-                          type="text"
-                          className="border-0 px-3 py-3 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
-                          name="country"
-                          value={country}
-                          onChange={(e) => setCountry(e.target.value)}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="w-full lg:w-4/12 px-4">
-                    <div className="relative w-full mb-3">
-                      <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2">
-                        Postal Code
-                      </label>
-                      <div className="flex">
-                        <span className="inline-flex items-center px-3 text-sm text-blue-900 bg-blue-200 border border-r-0 border-blue-300 rounded-l-md dark:bg-blue-600 dark:text-white dark:border-blue-600">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth="1.5"
-                            stroke="currentColor"
-                            className="w-6 h-6"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z"
-                            />
-                          </svg>
-                        </span>
-                        <input
-                          className="border-0 px-3 py-3 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full "
-                          name="postalcode"
-                          value={postalcode}
-                          onChange={(e) => setPostalcode(e.target.value)}
-                        />
-                      </div>
-                    </div>
-                  </div> */}
+
                 </div>
               </form>
             </div>
