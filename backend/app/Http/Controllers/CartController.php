@@ -27,6 +27,19 @@ class CartController extends Controller
     public function store(Request $request)
     {
         try {
+
+            // Check if the combination already exists in the database
+            $existingCart = Cart::where('student_id', $request->input('student_id'))
+                ->where('cours_id', $request->input('cours_id'))
+                ->first();
+
+            if ($existingCart) {
+                // Return error response for duplicated combination
+                return response()->json([
+                    'message' => "The combination of student ID and course ID already exists."
+                ], 400);
+            }
+
             // Create Cart
             Cart::create($request->all());
 
