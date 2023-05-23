@@ -28,6 +28,11 @@ class Student extends Model
         return $this->hasOne(Cart::class);
     }
 
+    public function olas()
+    {
+        return $this->asMany(OLA::class);
+    }
+
     public function courses()
     {
         return $this->belongsToMany(Cours::class, 'carts', 'student_id', 'cours_id');

@@ -9,11 +9,11 @@ class Cours extends Model
 {
     use HasFactory;
 
-    protected $guarded =[
+    protected $guarded = [
         'id'
     ];
 
-    protected $fillable=[
+    protected $fillable = [
         'name',
         'code',
         'description',
@@ -26,7 +26,14 @@ class Cours extends Model
         return $this->belongsToMany(Student::class, 'cart', 'cours_id', 'student_id');
     }
 
-    public function comments() {
+    public function olas()
+    {
+        return $this->belongsToMany(OLAModel::class, 'o_l_a_cours', 'cours_id', 'o_l_a_id');
+    }
+
+
+    public function comments()
+    {
         return $this->hasMany(Comment::class);
     }
 }
