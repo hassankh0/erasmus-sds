@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { PDFDownloadLink, Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
+import * as olasServices from "../../services/olaServices";
 
-
+import FolderIcon from '@mui/icons-material/Folder';
 const styles = StyleSheet.create({
   page: {
     fontFamily: 'Helvetica',
@@ -74,10 +75,42 @@ const styles = StyleSheet.create({
 
 
 const LearningAgreement = (props) => {
-  const { sendingInstitution, receivingInstitution, CourseInfo } = props;
+  const { id } = props;
+  const [CourseInfo,setCoursesInfo]=useState([]);
+  const [sendingInstitution, setSendingInstitution] = useState({
+    name: '',
+    responsibleName: '',
+    contactEmail: '',
+    department: '',
+  });
+  const [receivingInstitution, setReceivingInstitution] = useState({
+    name: '',
+    responsibleName: '',
+    contactEmail: '',
+    department: '',
+  });
+
 
   const student = JSON.parse(sessionStorage.getItem("student"));
-  useEffect(() => {})
+  const getdata = async () => {
+    const ola = await olasServices.getOla(id);
+    setCoursesInfo(ola.cours);
+    setReceivingInstitution({
+      name: ola.receiving_institution_contact,
+      responsibleName: ola.receiving_institution_faculty,
+      contactEmail: ola.receiving_institution_name,
+      department: ola.receiving_institution_responsible,
+    })
+    setSendingInstitution({
+      name: ola.sending_institution_contact,
+      responsibleName: ola.sending_institution_faculty,
+      contactEmail: ola.sending_institution_name,
+      department: ola.sending_institution_responsible,
+    });
+  }
+  useEffect(() => {
+    getdata();
+  },[])
 
   const CreateLearningAgreement = () => {
     const OLA = (
@@ -189,7 +222,7 @@ const LearningAgreement = (props) => {
 
     return (
       <PDFDownloadLink document={OLA} fileName="Learning Agreement.pdf">
-        {({ blob, url, loading, error }) => (loading ? 'Loading...' : 'Download')}
+        {({ blob, url, loading, error }) => (loading ? 'Loading...' : (<FolderIcon />))}
       </PDFDownloadLink>
     );
   };

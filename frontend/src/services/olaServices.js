@@ -5,9 +5,10 @@ import { API_URL } from '../config/environment';
 export const getOlas = async () => {
     const studentId = JSON.parse(sessionStorage.getItem("student")).id;
     try {
-        const response = await axios.get(`${API_URL}/students/${studentId}/olas`);
-        console.log(response.data);
-        return response.data;
+        const response = await axios.get(`${API_URL}/students/${studentId}/olas`)
+
+        console.log(response.data.olas)
+        return response.data.olas;
     } catch (error) {
         console.error(error);
     }
@@ -16,7 +17,6 @@ export const getOlas = async () => {
 export const getOla = async (id) => {
     try {
         const response = await axios.get(`${API_URL}/olas/${id}`);
-        console.log(response.data);
         return response.data.ola;
     } catch (error) {
         console.error(error);
@@ -55,6 +55,15 @@ export const CreateOla = async (courses, sendingInstitution, receivingInstitutio
         });
 
         return true;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const deleteOla = async (id) => {
+    try {
+        const response = await axios.delete(`${API_URL}/olas/${id}`);
+        return response;
     } catch (error) {
         console.error(error);
     }
