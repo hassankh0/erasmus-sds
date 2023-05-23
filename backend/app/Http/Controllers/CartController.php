@@ -95,4 +95,23 @@ class CartController extends Controller
             'message' => "Cart successfully deleted."
         ], 200);
     }
+
+    public function destroyByStudentId($studentId)
+    {
+        // Find all carts of the student
+        $carts = Cart::where('student_id', $studentId)->get();
+
+        if ($carts->isEmpty()) {
+            return response()->json([
+                'message' => 'No carts found for the specified student ID.'
+            ], 404);
+        }
+
+        // Delete all carts
+        Cart::where('student_id', $studentId)->delete();
+
+        return response()->json([
+            'message' => 'All carts of the student successfully deleted.'
+        ], 200);
+    }
 }

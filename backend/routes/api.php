@@ -68,4 +68,7 @@ Route::middleware(['cors'])->group(function () {
 
     Route::post('/ola_cours', [OLACoursController::class, 'store']);
     Route::delete('/ola_cours/{id}', [OLACoursController::class, 'destroy']);
+
+    Route::delete('/carts/student/{studentId}', [CartController::class, 'destroyByStudentId']);
+
 });

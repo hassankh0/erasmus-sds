@@ -5,11 +5,12 @@ import { TextField, Typography, Grid, Paper } from '@mui/material';
 import CartItem from './CartItem';
 import LearningAgreement from './PDFPages/PDFPages';
 import * as coursServices from '../services/coursServices';
+import * as olaServices from '../services/olaServices';
 
 const ShopingCart = () => {
   const [courses, setCourses] = useState([]);
   const [total, setTotal] = useState(0);
-
+  const [olaId, setOlaId] = useState(0);
   const [sendingInstitution, setSendingInstitution] = useState({
     name: '',
     responsibleName: '',
@@ -44,6 +45,26 @@ const ShopingCart = () => {
     data.map((d) => (t += d.credits));
     setTotal(t);
   };
+
+  const save = async () => {
+    await olaServices.CreateOla(courses, sendingInstitution, receivingInstitution).then(() => {
+      setSendingInstitution({
+        name: '',
+        responsibleName: '',
+        contactEmail: '',
+        department: '',
+      });
+      setReceivingInstitution({
+        name: '',
+        responsibleName: '',
+        contactEmail: '',
+        department: '',
+      });
+      setCourses([]);
+      setTotal(0);
+    });
+
+  }
 
   useEffect(() => {
     fetchCourses();
@@ -170,13 +191,10 @@ const ShopingCart = () => {
         </Paper>
 
         {(courses.length > 0 && !isFormEmpty) && (
-          <div className="flex justify-end">
-            <a
-              className="block rounded bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600"
-            >
-              <LearningAgreement CourseInfo={courses} sendingInstitution={sendingInstitution} receivingInstitution={receivingInstitution} />
-            </a>
-          </div>
+
+          <Button onClick={save}>
+            Save
+          </Button>
         )}
       </div>
     </section>
