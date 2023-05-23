@@ -27,6 +27,19 @@ class CartController extends Controller
     public function store(Request $request)
     {
         try {
+
+            // Check if the combination already exists in the database
+            $existingCart = Cart::where('student_id', $request->input('student_id'))
+                ->where('cours_id', $request->input('cours_id'))
+                ->first();
+
+            if ($existingCart) {
+                // Return error response for duplicated combination
+                return response()->json([
+                    'message' => "The combination of student ID and course ID already exists."
+                ], 400);
+            }
+
             // Create Cart
             Cart::create($request->all());
 
@@ -80,6 +93,25 @@ class CartController extends Controller
         // Return Json Response
         return response()->json([
             'message' => "Cart successfully deleted."
+        ], 200);
+    }
+
+    public function destroyByStudentId($studentId)
+    {
+        // Find all carts of the student
+        $carts = Cart::where('student_id', $studentId)->get();
+
+        if ($carts->isEmpty()) {
+            return response()->json([
+                'message' => 'No carts found for the specified student ID.'
+            ], 404);
+        }
+
+        // Delete all carts
+        Cart::where('student_id', $studentId)->delete();
+
+        return response()->json([
+            'message' => 'All carts of the student successfully deleted.'
         ], 200);
     }
 }
