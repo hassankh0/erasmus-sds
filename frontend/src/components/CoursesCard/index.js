@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import "./index.css";
 import { useNavigate, Link } from "react-router-dom";
 import { addCoursesToStudent } from '../../services/coursServices';
-import {checkLogin} from '../../utils/checkLogin';
+import { checkLogin } from '../../utils/checkLogin';
 
 
 export default function ImgMediaCard({ course }) {
@@ -18,23 +18,25 @@ export default function ImgMediaCard({ course }) {
   const [showNotification, setShowNotification] = useState(false);
 
   //Comportement
-          
+
   //Notification effect
   useEffect(() => {
-      if (showNotification) {
-        const timer = setTimeout(() => {
-          setShowNotification(false);
-        }, 2000);
-            
-        return () => {
-          clearTimeout(timer);
-        };
-      }
-    }, [showNotification]);
-      
-  const handleAdd = () => {
-    addCoursesToStudent(course.id);
-    setShowNotification(true);
+    if (showNotification) {
+      const timer = setTimeout(() => {
+        setShowNotification(false);
+      }, 2000);
+
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+  }, [showNotification]);
+
+  const handleAdd = async () => {
+    await addCoursesToStudent(course.id) ?
+      setShowNotification(true)
+      :
+      alert('duplicated Course!');
   }
 
   return (
@@ -53,32 +55,32 @@ export default function ImgMediaCard({ course }) {
           {course.code}
         </Typography>
         <div className='paragraph'>
-        <Typography variant="body2" color="text.secondary">
-          {course.description.split()}
-        </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {course.description.split()}
+          </Typography>
         </div>
       </CardContent>
 
       <CardActions>
         <div className='showbtn'>
           <Button size="small" component={Link} to={`/Cours-Details/${course.id}`} >DETAILS</Button>
-          {checkLogin() ? <Button size="small" onClick={handleAdd}  >Add</Button>:<></>}
+          {checkLogin() ? <Button size="small" onClick={handleAdd}  >Add</Button> : <></>}
 
           <div >
             {showNotification && (
-                    <div className="fixed inset-0 flex items-center justify-center z-50">
-                        <div className="bg-white w-64 p-4 rounded shadow border-4  border-gray-100">
-                            <h2 className="text-lg text-blue-500 mb-4 text-center">The course has been added to the cart</h2>
-                        </div>
-                    </div>
-                )}
-            </div>
+              <div className="fixed inset-0 flex items-center justify-center z-50">
+                <div className="bg-white w-64 p-4 rounded shadow border-4  border-gray-100">
+                  <h2 className="text-lg text-blue-500 mb-4 text-center">The course has been added to the cart</h2>
+                </div>
+              </div>
+            )}
+          </div>
 
         </div>
 
       </CardActions>
-      
+
     </Card>
-    
+
   );
 }
