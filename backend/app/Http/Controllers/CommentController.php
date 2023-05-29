@@ -65,7 +65,10 @@ class CommentController extends Controller
      */
     public function update(Request $request, Comment $comment)
     {
-        //
+        $comment->isReported = true;
+        $comment->save();
+    
+        return response()->json(['message' => 'Comment reported successfully']);
     }
 
     /**

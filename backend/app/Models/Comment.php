@@ -13,7 +13,9 @@ class Comment extends Model
         'content',
         'student_id',
         'cours_id',
-        'rate'
+        'rate',
+        'isReported',
+
     ];
 
     public function student()
