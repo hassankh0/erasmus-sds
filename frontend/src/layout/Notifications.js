@@ -97,11 +97,26 @@ export default function SDSAdminApp() {
   };
 
   const handleSendNotification = () => {
-    const newNotification = { message: notification, importance };
-    localStorage.setItem("notification", JSON.stringify(newNotification));
+    const existingNotifications = JSON.parse(sessionStorage.getItem('notifications')) || [];
+    const currentDate = new Date();
+    const day = String(currentDate.getDate()).padStart(2, '0');
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+    const formattedDate = `${day}/${month}`;
+  
+    const newNotification = {
+      id: existingNotifications.length + 1, // Incrementing the ID
+      date: formattedDate, // Today's date in DD/MM format
+      message: notification,
+      importance: importance
+    };
+  
+    const updatedNotifications = [...existingNotifications, newNotification];
+  
+    sessionStorage.setItem('notifications', JSON.stringify(updatedNotifications));
+    alert('Notification sent');
     setShowNotification(true);
   };
-
+  
   const closeNotification = () => {
     localStorage.removeItem("notification");
     setShowNotification(false);
@@ -150,18 +165,20 @@ export default function SDSAdminApp() {
         >
           Send Notification
         </Button>
-        {showNotification && (
+        
+        {/* {showNotification && (
           <NotificationWindow
             message={notification}
             importance={importance}
             onClose={closeNotification}
           />
-        )}
+        )} */}
       </Main>
     </Box>
   );
 }
 
+/*
 function NotificationWindow({ message, importance, onClose }) {
   let backgroundColor;
   let textColor;
@@ -207,4 +224,4 @@ function NotificationWindow({ message, importance, onClose }) {
       </Button>
     </div>
   );
-}
+}*/
