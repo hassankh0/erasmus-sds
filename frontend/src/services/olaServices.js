@@ -43,17 +43,17 @@ export const CreateOla = async (courses, sendingInstitution, receivingInstitutio
         const olaId = response.data.ola.id;
         courses.map(async (cours) => {
             try {
-                await axios.post(`${API_URL}/ola_cours`,{
+                await axios.post(`${API_URL}/ola_cours`, {
                     o_l_a_id: olaId,
                     cours_id: cours.id
                 });
-                await axios.delete(`${API_URL}/carts/student/${studentId}`);
             } catch (error) {
                 await axios.delete(`${API_URL}/olas/${olaId}`);
                 return false;
             }
         });
 
+        await axios.delete(`${API_URL}/carts/student/${studentId}`);
         return true;
     } catch (error) {
         console.error(error);

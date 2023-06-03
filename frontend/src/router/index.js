@@ -58,11 +58,11 @@ const index = () => {
             <Route path="/admin/Add-Course" element={<AddCourse />} />
             <Route path="/admin/TableCourses" element={<TableCourses />} />
             <Route
-              path="/admin/TableCourses/admin/editCourse/:id"
+              path="/admin/editCourse/:id"
               element={<EditCourse />}
             />
             <Route
-              path="/admin/TableStudents/admin/editStudent/:id"
+              path="/admin/editStudent/:id"
               element={<EditStudent />}
             />
           </Route>
