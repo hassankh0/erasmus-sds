@@ -10,8 +10,8 @@ import Button from '@mui/material/Button';
 import { deleteComment } from '../services/coursServices';
 
 export default function Commentaire({ commentKey, course, comment, onDelete }) {
-  
   const [sessionData, setSessionData] = useState(null);
+
   useEffect(() => {
     const sessionDataString = sessionStorage.getItem('student');
     if (sessionDataString) {
@@ -19,6 +19,7 @@ export default function Commentaire({ commentKey, course, comment, onDelete }) {
       setSessionData(sD);
     }
   }, []);
+
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     const options = { year: 'numeric', month: 'short', day: 'numeric' };
@@ -30,7 +31,7 @@ export default function Commentaire({ commentKey, course, comment, onDelete }) {
     try {
       console.log('Session id:', sessionData.id);
       console.log('Id du compte du commentaire supprimé: ' + comment.student_id);
-  
+
       if (sessionData.id === comment.student_id) {
         await deleteComment(course, comment.id);
         onDelete(comment.id);
@@ -41,7 +42,6 @@ export default function Commentaire({ commentKey, course, comment, onDelete }) {
       console.error('Error deleting comment:', error);
     }
   };
-  
 
   return (
     <Card sx={{ width: '100%' }} style={{ margin: 0, justifyContent: 'center', marginBottom: '1rem' }}>
@@ -59,9 +59,11 @@ export default function Commentaire({ commentKey, course, comment, onDelete }) {
           {comment.content}
         </Typography>
       </CardContent>
-      <Button variant="outlined" color="secondary" onClick={handleDelete}>
-        Delete
-      </Button>
+      {sessionData?.id === comment.student_id && ( 
+        <Button variant="outlined" color="secondary" onClick={handleDelete}>
+          Delete
+        </Button>
+      )}
     </Card>
   );
 }
