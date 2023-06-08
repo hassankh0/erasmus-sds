@@ -96,7 +96,7 @@ export const removeCoursesOfStudent = async (coursId) => {
 export const addCommentToCourse = async (courseId, commentText, commentRating) => {
     const studentId = JSON.parse(sessionStorage.getItem("student")).id;
     try {
-        const response = await axios.post(`${API_URL}/comment`, {
+        const response = await axios.post(`${API_URL}/comments`, {
             student_id: studentId,
             cours_id: courseId,
             content: commentText,
@@ -107,3 +107,34 @@ export const addCommentToCourse = async (courseId, commentText, commentRating) =
         console.error(error);
     }
 }
+
+export const getCommentById = async (commentId) => {
+    try {
+      const response = await axios.get(`${API_URL}/comments/${commentId}`);
+      return response.data.comment;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  export const deleteComment = async (courseId, commentId) => {
+    try {
+      //const response = await axios.delete(`${API_URL}/comments/${commentId}`);
+      const response = await axios.delete(`${API_URL}/cours/${courseId}/comments/${commentId}`);
+      return response.data.comment;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  
+  /*
+  export const getCommentsByCourseId = async (courseId) => {
+    try {
+      const response = await axios.get(`${API_URL}/comment?id=${courseId}`);
+      return response.data.comments;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  */
+  

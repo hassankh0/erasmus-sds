@@ -9,10 +9,25 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import IconButton from "@mui/material/IconButton";
 import FlagIcon from "@mui/icons-material/Flag";
 import { markCommentAsReported } from "../services/commentServices";
+import Button from '@mui/material/Button';
+
+import { deleteComment } from '../services/coursServices';
+
+export default function Commentaire({ commentKey, course, comment, onDelete }) {
+  const [sessionData, setSessionData] = useState(null);
+
+  useEffect(() => {
+    const sessionDataString = sessionStorage.getItem('student');
+    if (sessionDataString) {
+      const sD = JSON.parse(sessionDataString);
+      setSessionData(sD);
+    }
+  }, []);
 
 export default function Commentaire({ comment }) {
   const formatDate = (dateString) => {
     const date = new Date(dateString);
+    
     const options = { year: "numeric", month: "short", day: "numeric" };
     const formattedDate = date.toLocaleDateString("en-US", options).toUpperCase();
     return formattedDate; // Outputs: 30 APR 2023
@@ -36,17 +51,35 @@ export default function Commentaire({ comment }) {
           console.error(error);
           console.log("unsucceful");
         });
+
+  const handleDelete = async () => {
+    try {
+      console.log('Session id:', sessionData.id);
+      console.log('Id du compte du commentaire supprimé: ' + comment.student_id);
+
+      if (sessionData.id === comment.student_id) {
+        await deleteComment(course, comment.id);
+        onDelete(comment.id);
+      } else {
+        console.log('Session id does not match comment student id. Delete operation skipped.');
+      }
+    } catch (error) {
+      console.error('Error deleting comment:', error);
     }
   };
 
   return (
     <Card sx={{ width: "100%" }} style={{ margin: 0, justifyContent: "center", marginBottom: "1rem" }}>
+
+    <Card sx={{ width: '100%' }} style={{ margin: 0, justifyContent: 'center', marginBottom: '1rem' }}>
+
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: blue[500] }} aria-label="recipe">
             {comment.student.username.slice(0, 2)}
           </Avatar>
         }
+        
         action={
           <React.Fragment>
             <IconButton
@@ -106,12 +139,16 @@ export default function Commentaire({ comment }) {
         title={comment.student.username}
         subheader={formatDate(comment.updated_at)}
       />
-
       <CardContent>
         <Typography variant="body2" color="text.secondary">
           {comment.content}
         </Typography>
       </CardContent>
+      {sessionData?.id === comment.student_id && ( 
+        <Button variant="outlined" color="secondary" onClick={handleDelete}>
+          Delete
+        </Button>
+      )}
     </Card>
   );
 }
