@@ -56,7 +56,7 @@ Route::middleware(['cors'])->group(function () {
     Route::get('/comment', [CommentController::class, "index"]); // List Students
 
     Route::get('/commentreported', [CommentController::class, "indexReported"]); // List Students
-    Route::post('/comment', [CommentController::class, "store"]); // Create Student
+    Route::post('/comments', [CommentController::class, "store"]); // Create Student
     Route::get('/comment/{comment}', [CommentController::class, "show"]); // Detail of Student
     Route::put('/comment/{comment}', [CommentController::class, "update"]); // Update Student
     Route::delete('/comment/{comment}', [CommentController::class, "destroy"]); // Delete Student

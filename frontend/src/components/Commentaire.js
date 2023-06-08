@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardContent from "@mui/material/CardContent";
@@ -8,12 +8,14 @@ import { blue } from "@mui/material/colors";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import IconButton from "@mui/material/IconButton";
 import FlagIcon from "@mui/icons-material/Flag";
-import { markCommentAsReported } from "../services/commentServices";
+import {
+  markCommentAsReported,
+  deleteComment,
+} from "../services/commentServices";
 import Button from '@mui/material/Button';
 
-import { deleteComment } from '../services/coursServices';
 
-export default function Commentaire({ commentKey, course, comment, onDelete }) {
+export default function Commentaire({comment, onDelete}) {
   const [sessionData, setSessionData] = useState(null);
 
   useEffect(() => {
@@ -24,7 +26,6 @@ export default function Commentaire({ commentKey, course, comment, onDelete }) {
     }
   }, []);
 
-export default function Commentaire({ comment }) {
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     
@@ -51,26 +52,12 @@ export default function Commentaire({ comment }) {
           console.error(error);
           console.log("unsucceful");
         });
-
+      }}
   const handleDelete = async () => {
-    try {
-      console.log('Session id:', sessionData.id);
-      console.log('Id du compte du commentaire supprimé: ' + comment.student_id);
-
-      if (sessionData.id === comment.student_id) {
-        await deleteComment(course, comment.id);
-        onDelete(comment.id);
-      } else {
-        console.log('Session id does not match comment student id. Delete operation skipped.');
-      }
-    } catch (error) {
-      console.error('Error deleting comment:', error);
-    }
+      await onDelete(comment.id);
   };
 
   return (
-    <Card sx={{ width: "100%" }} style={{ margin: 0, justifyContent: "center", marginBottom: "1rem" }}>
-
     <Card sx={{ width: '100%' }} style={{ margin: 0, justifyContent: 'center', marginBottom: '1rem' }}>
 
       <CardHeader
