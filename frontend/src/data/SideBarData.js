@@ -1,9 +1,11 @@
-import MenuBookIcon from "@mui/icons-material/MenuBook";
-import HomeIcon from "@mui/icons-material/Home";
-import GroupIcon from "@mui/icons-material/Group";
-import HandshakeIcon from "@mui/icons-material/Handshake";
-import SchoolIcon from "@mui/icons-material/School";
+import MenuBookIcon from '@mui/icons-material/MenuBook';
+import HomeIcon from '@mui/icons-material/Home';
+import GroupIcon from '@mui/icons-material/Group';
+import HandshakeIcon from '@mui/icons-material/Handshake';
+import SchoolIcon from '@mui/icons-material/School';
+import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import ContactSupportIcon from "@mui/icons-material/ContactSupport";
+
 export const SIDEBAR_DATA = [
   {
     title: "Home",
@@ -54,6 +56,12 @@ export const SIDEBAR_DATA_ADMIN = [
     icon: <SchoolIcon />,
     to:"/admin/AllUnis",
     hasChildren: false,
+  },
+  {
+    title:"Notifications",
+    icon:<NotificationsActiveIcon/>,
+    to:"/admin/Notifications",
+    hasChildren:false,
   },
   // {
   //   title: "University",

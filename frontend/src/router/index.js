@@ -20,6 +20,7 @@ import EditStudent from "../components/EditStudent";
 import Olatable from "../components/Olatable";
 import AdminPage from "../pages/Admin/admin";
 import PDF_Generator from "../components/PDFPages/PDFPages";
+import Notifications from "../layout/Notifications";
 import ContactPage from "../pages/Contact/Contact";
 
 // ================================================================
@@ -55,6 +56,10 @@ const index = () => {
             <Route path="/admin/home" element={<AdminPage />} />
             <Route path="/admin/AddStudent" element={<AddStudent />} />
             <Route path="/admin/TableStudents" element={<TableStudents />} />
+            <Route path="/admin/editStudent/:id" element={<EditStudent />} />
+            <Route path="/admin/editCourse/:id" element={<EditCourse />} />
+            <Route path="/admin/Notifications/" element={<Notifications/>}/>
+
             <Route path="/admin/Add-Course" element={<AddCourse />} />
             <Route path="/admin/TableCourses" element={<TableCourses />} />
             <Route
