@@ -21,6 +21,7 @@ import Olatable from "../components/Olatable";
 import AdminPage from "../pages/Admin/admin";
 import PDF_Generator from "../components/PDFPages/PDFPages";
 import ContactPage from "../pages/Contact/Contact";
+import TableReport from "../components/ReportTable";
 
 // ================================================================
 const SDSApp = lazy(() => import("../layout/SDSApp"));
@@ -57,6 +58,8 @@ const index = () => {
             <Route path="/admin/TableStudents" element={<TableStudents />} />
             <Route path="/admin/Add-Course" element={<AddCourse />} />
             <Route path="/admin/TableCourses" element={<TableCourses />} />
+            <Route path="/admin/Reports" element={<TableReport />} />
+
             <Route
               path="/admin/TableCourses/admin/editCourse/:id"
               element={<EditCourse />}
