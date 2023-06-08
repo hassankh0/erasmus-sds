@@ -4,6 +4,8 @@ import GroupIcon from '@mui/icons-material/Group';
 import HandshakeIcon from '@mui/icons-material/Handshake';
 import SchoolIcon from '@mui/icons-material/School';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
+import ContactSupportIcon from "@mui/icons-material/ContactSupport";
+
 export const SIDEBAR_DATA = [
   {
     title: "Home",
@@ -16,18 +18,27 @@ export const SIDEBAR_DATA = [
     icon: <MenuBookIcon />,
     to: "AllCourses",
     hasChildren: false,
-   
   },
   {
     title: "OLA",
     icon: <HandshakeIcon />,
-    to:"OLA",
+    to: "OLA",
     hasChildren: false,
-  
   },
-
+  {
+    title: "Contact",
+    icon: <ContactSupportIcon />,
+    to: "Contact",
+    hasChildren: false,
+  },
 ];
 export const SIDEBAR_DATA_ADMIN = [
+  {
+    title: "Home",
+    icon: <HomeIcon />,
+    to: "home",
+    hasChildren: false,
+  },
   {
     title: "User",
     icon: <GroupIcon />,
@@ -38,15 +49,13 @@ export const SIDEBAR_DATA_ADMIN = [
     title: "Courses",
     icon: <MenuBookIcon />,
     to: "/admin/TableCourses",
-    hasChildren: false,
-   
+    hasChildren: false, 
   },
   {
     title: "University",
     icon: <SchoolIcon />,
     to:"/admin/AllUnis",
     hasChildren: false,
-  
   },
   {
     title:"Notifications",
@@ -54,5 +63,11 @@ export const SIDEBAR_DATA_ADMIN = [
     to:"/admin/Notifications",
     hasChildren:false,
   },
+  // {
+  //   title: "University",
+  //   icon: <SchoolIcon />,
+  //   to:"AllUnis",
+  //   hasChildren: false,
 
+  // },
 ];

@@ -8,6 +8,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\StudentCoursesController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ForgetPasswordController;
+use App\Http\Controllers\OLAController;
+use App\Http\Controllers\OLACoursController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -54,4 +56,19 @@ Route::middleware(['cors'])->group(function () {
     Route::post('/comment',[CommentController::class,"store"]); // Add Comment
 
     Route::post('/forgetpwd',[ForgetPasswordController::class,"store"]);
+
+
+    Route::get('olas', [OLAController::class, 'index']);
+    Route::post('olas', [OLAController::class, 'store']);
+    Route::get('olas/{id}', [OLAController::class, 'show']);
+    Route::put('olas/{id}', [OLAController::class, 'update']);
+    Route::delete('olas/{id}', [OLAController::class, 'destroy']);
+    Route::get('students/{studentId}/olas', [OLAController::class, 'getOLAsByStudent']);
+
+
+    Route::post('/ola_cours', [OLACoursController::class, 'store']);
+    Route::delete('/ola_cours/{id}', [OLACoursController::class, 'destroy']);
+
+    Route::delete('/carts/student/{studentId}', [CartController::class, 'destroyByStudentId']);
+
 });

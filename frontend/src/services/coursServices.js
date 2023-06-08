@@ -69,9 +69,16 @@ export const addCoursesToStudent = async (coursId) => {
             cours_id: coursId
         });
 
-        return response.data.course;
+        return true;
     } catch (error) {
-        console.error(error);
+        if (error.response && error.response.status === 400) {
+            // Handle 400 status code
+            console.log("Error: Duplicate combination of student ID and course ID.");
+            return false;
+        } else {
+            // Handle other errors
+            console.error(error);
+        }
     }
 }
 

@@ -17,10 +17,11 @@ import ForgotPassword from "../pages/Auth/ForgotPassword";
 import AddStudent from "../components/AddStudent";
 import TableStudents from "../components/TableStudent";
 import EditStudent from "../components/EditStudent";
-
+import Olatable from "../components/Olatable";
 import AdminPage from "../pages/Admin/admin";
 import PDF_Generator from "../components/PDFPages/PDFPages";
 import Notifications from "../layout/Notifications";
+import ContactPage from "../pages/Contact/Contact";
 
 // ================================================================
 const SDSApp = lazy(() => import("../layout/SDSApp"));
@@ -41,23 +42,35 @@ const index = () => {
             <Route path="/Cours-Details/:coursId" element={<CoursDetail />} />
             <Route path="/AllUnis" element={<ListOfUniversities />} />
             <Route path="/shopingCart" element={<CoursesCart />} />
+
             <Route path="/Profile" element={<ProfilePage />} />
 
+            <Route path="/OLA" element={<Olatable/>} />
             <Route path="/pdf_generator" element={<PDF_Generator />} />
+            <Route path="/Add-Course" element={<AddCourse />} />
+            <Route path="/Contact" element={<ContactPage />} />
 
             <Route path="*" element={<Home />} />
           </Route>
           <Route path="/admin" element={<SDSAdminApp />}>
-            <Route path="/admin/Add-Course" element={<AddCourse />} />
-            <Route path="/admin/TableCourses" element={<TableCourses />} />
+            <Route path="/admin/home" element={<AdminPage />} />
             <Route path="/admin/AddStudent" element={<AddStudent />} />
             <Route path="/admin/TableStudents" element={<TableStudents />} />
             <Route path="/admin/editStudent/:id" element={<EditStudent />} />
             <Route path="/admin/editCourse/:id" element={<EditCourse />} />
             <Route path="/admin/Notifications/" element={<Notifications/>}/>
 
+            <Route path="/admin/Add-Course" element={<AddCourse />} />
+            <Route path="/admin/TableCourses" element={<TableCourses />} />
+            <Route
+              path="/admin/editCourse/:id"
+              element={<EditCourse />}
+            />
+            <Route
+              path="/admin/editStudent/:id"
+              element={<EditStudent />}
+            />
           </Route>
-
         </Routes>
       </Suspense>
     </Router>
