@@ -21,6 +21,8 @@ class CommentFactory extends Factory
             'cours_id' => \App\Models\Cours::all()->random()->id,
             'content' => fake()->text(),
             'rate' => fake()->numberBetween(0.5, 5) * 20,
+            'isReported' => false, 
+
         ];
     }
 }

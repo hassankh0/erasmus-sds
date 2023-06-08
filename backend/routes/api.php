@@ -53,7 +53,15 @@ Route::middleware(['cors'])->group(function () {
     Route::get('/courses/student/{student}',[StudentCoursesController::class, "show"]); // List courses in student cart
     Route::delete('/courses/student/{studentId}/{courseId}', [StudentCoursesController::class, "delete"]); // delete a course in student cart
 
-    Route::post('/comment',[CommentController::class,"store"]); // Add Comment
+    Route::get('/comment', [CommentController::class, "index"]); // List Students
+
+    Route::get('/commentreported', [CommentController::class, "indexReported"]); // List Students
+    Route::post('/comment', [CommentController::class, "store"]); // Create Student
+    Route::get('/comment/{comment}', [CommentController::class, "show"]); // Detail of Student
+    Route::put('/comment/{comment}', [CommentController::class, "update"]); // Update Student
+    Route::delete('/comment/{comment}', [CommentController::class, "destroy"]); // Delete Student
+    Route::put('/comment/{comment}/mark-as-unreported', [CommentController::class, "markAsUnreported"]);
+    Route::put('/comment/{comment}/mark-as-reported', [CommentController::class, "markAsreported"]);
 
     Route::post('/forgetpwd',[ForgetPasswordController::class,"store"]);
 
