@@ -4,7 +4,7 @@ import ImgMediaCard from '../CoursesCard';
 import { Button } from '@mui/material';
 import {Table, TableHead, TableCell, TableBody, TableRow} from '@mui/material';
 import "./index.css";
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import * as studentServices from "../../services/userServices";
 export default function TableStudents() {
     const [students, setStudents] = useState([]);

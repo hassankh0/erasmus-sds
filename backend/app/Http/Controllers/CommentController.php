@@ -12,7 +12,16 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        $comments = Comment::all();
+
+        return response()->json($comments);
+    }
+
+    public function indexReported()
+    {
+        $reportedComments = Comment::where('isReported', true)->get();
+
+        return response()->json($reportedComments);
     }
 
     /**
@@ -20,7 +29,7 @@ class CommentController extends Controller
      */
     public function create()
     {
-        //
+        // You can return a view here to show the create comment form
     }
 
     /**
@@ -30,11 +39,12 @@ class CommentController extends Controller
     {
         try {
             // Create Comment
-            Comment::create($request->all());
+            $comment = Comment::create($request->all());
 
             // Return Json Response
             return response()->json([
-                'message' => "Comment successfully created."
+                'message' => "Comment successfully created.",
+                'comment' => $comment
             ], 201);
         } catch (\Exception $e) {
             // Return Json Response
@@ -49,7 +59,7 @@ class CommentController extends Controller
      */
     public function show(Comment $comment)
     {
-        //
+        return response()->json($comment);
     }
 
     /**
@@ -57,22 +67,34 @@ class CommentController extends Controller
      */
     public function edit(Comment $comment)
     {
-        //
+        // You can return a view here to show the edit comment form
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Comment $comment)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Comment $comment)
     {
-        //
+        $comment->delete();
+
+        return response()->json(['message' => 'Comment deleted successfully']);
+    }
+    public function markAsUnreported(Comment $comment)
+    {
+        $comment->isReported = false;
+        $comment->save();
+
+        return response()->json(['message' => 'Comment marked as unreported']);
+    }
+    public function markAsreported(Comment $comment)
+    {
+        $comment->isReported = true;
+        $comment->save();
+
+        return response()->json(['message' => 'Comment marked as reported']);
     }
 }

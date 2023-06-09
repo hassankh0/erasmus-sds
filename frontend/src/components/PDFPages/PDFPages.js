@@ -1,101 +1,237 @@
-import { PDFDownloadLink, Document, Page, Text, View } from '@react-pdf/renderer';
+import React, { useEffect, useState } from 'react';
+import { PDFDownloadLink, Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
+import * as olasServices from "../../services/olaServices";
 
-//Export du composant
-export default function LearningAgreement(props) {
+import FolderIcon from '@mui/icons-material/Folder';
+const styles = StyleSheet.create({
+  page: {
+    fontFamily: 'Helvetica',
+    fontSize: 12,
+    paddingTop: 30,
+    paddingBottom: 60,
+    paddingHorizontal: 50,
+    textAlign: 'center',
+  },
+  section: {
+    marginBottom: 20,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  subtitle: {
+    fontSize: 18,
+    marginBottom: 10,
+  },
+  institutionContainer: {
+    marginBottom: 20,
+  },
+  institutionText: {
+    fontSize: 15,
+    marginBottom: 2,
+    marginRight: 4,
+  },
+  courseTable: {
+    borderWidth: 1,
+    borderStyle: 'solid',
+  },
+  tableRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    borderBottomWidth: 1,
+    borderStyle: 'solid',
+    borderBottomColor: '#000000',
+    backgroundColor: '#f2f2f2',
+    padding: 10,
+  },
+  tableHeader: {
+    fontSize: 12,
+    textAlign: 'center',
+  },
+  tableCell: {
+    fontSize: 10,
+    textAlign: 'left',
+  },
+  signatureContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 50,
+  },
+  signatureBox: {
+    width: '30%',
+    height: 80,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    marginTop: 10,
+    padding: 5,
+    textAlign: 'center',
+  },
+  signatureLabel: {
+    fontSize: 10,
+    marginBottom: 5,
+  },
+});
 
 
-  //state
+const LearningAgreement = (props) => {
+  const { id } = props;
+  const [CourseInfo,setCoursesInfo]=useState([]);
+  const [sendingInstitution, setSendingInstitution] = useState({
+    name: '',
+    responsibleName: '',
+    contactEmail: '',
+    department: '',
+  });
+  const [receivingInstitution, setReceivingInstitution] = useState({
+    name: '',
+    responsibleName: '',
+    contactEmail: '',
+    department: '',
+  });
 
-  //mock user
+
   const student = JSON.parse(sessionStorage.getItem("student"));
-
-  
-  //mock course
-  // const courses = [
-  //   { name: 'Introduction à la psychologie', code: 'PSY101', ects: 6 },
-  //   { name: 'Histoire de l\'art', code: 'ART102', ects: 3 },
-  //   { name: 'Sociologie de la communication', code: 'SOC205', ects: 6 }
-  // ];
-
-  //comportement 
+  const getdata = async () => {
+    const ola = await olasServices.getOla(id);
+    setCoursesInfo(ola.cours);
+    setReceivingInstitution({
+      name: ola.receiving_institution_contact,
+      responsibleName: ola.receiving_institution_faculty,
+      contactEmail: ola.receiving_institution_name,
+      department: ola.receiving_institution_responsible,
+    })
+    setSendingInstitution({
+      name: ola.sending_institution_contact,
+      responsibleName: ola.sending_institution_faculty,
+      contactEmail: ola.sending_institution_name,
+      department: ola.sending_institution_responsible,
+    });
+  }
+  useEffect(() => {
+    getdata();
+  },[])
 
   const CreateLearningAgreement = () => {
-    // Créer un nouveau document PDF
     const OLA = (
       <Document>
-        <Page>
-        <Text style={{ fontSize: 24, fontWeight: 'bold', marginBottom: 10, textAlign: "center"}}>Learning Agreement</Text>
-        {/* Section des informations utilisateur */}
-        <View style={{ marginBottom: 20 }}>
-          <Text style={{ fontSize: 18, marginBottom: 10 }}>User informations</Text>
-            <View> 
-              
-              <View>
-                <Text>
-                  <Text style={{ fontSize: 15, marginBottom: 2, marginRight: 4 }}>Name : </Text>
-                  <Text style={{ fontSize: 12}}> {student.lastname} {student.firstname}</Text>
-                </Text>
+        <Page style={styles.page}>
+          <Text style={styles.title}>Learning Agreement</Text>
+          {/* User information section */}
+          <View style={styles.section}>
+            <Text style={styles.subtitle}>User Information</Text>
+            <View style={styles.table}>
+              <View style={styles.tableRow}>
+                <Text style={styles.tableCell}>Name:</Text>
+                <Text style={styles.tableCell}>{student.firstname} {student.lastname} </Text>
               </View>
-
-              <View>
-                <Text>
-                  <Text style={{ fontSize: 15, marginBottom: 2, marginRight: 4 }}>Email : </Text>
-                  <Text style={{ fontSize: 12}}>{student.email}</Text>
-                </Text>
+              <View style={styles.tableRow}>
+                <Text style={styles.tableCell}>Email:</Text>
+                <Text style={styles.tableCell}>{student.email}</Text>
               </View>
-
-              <View>
-                <Text>
-                  <Text style={{ fontSize: 15, marginBottom: 2, marginRight: 4 }}>Nationality : </Text>
-                  <Text style={{ fontSize: 12}} >{student.nationality}</Text>
-                </Text>
-              </View>
+              {/* Add any additional user information fields as necessary */}
             </View>
-
           </View>
-        
-        
-        {/* Section des cours choisis */}
-        <View>
-          <Text style={{ fontSize: 18, marginBottom: 10 }}>Courses</Text>
-          <View style={{ borderWidth: 1, borderStyle:"solid" }}>
 
-            <View style={{ backgroundColor: "#f2f2f2", borderBottomWidth: 1, borderStyle: "solid", borderBottomColor: "#000000", flexDirection: "row", justifyContent: "space-between"}}>
-                <Text style={{ fontSize:12, margin: 10, textAlign: "left" }}>Name of Course</Text>
-                <Text style={{ fontSize:12, margin: 10, textAlign: "center"}}>Code of Course</Text>
-                <Text style={{ fontSize:12, margin: 10, textAlign: "right"}} >ECTS</Text>
+          {/* Sending Institution section */}
+          <View style={styles.section}>
+            <Text style={styles.subtitle}>Sending Institution</Text>
+            <View style={styles.table}>
+              <View style={styles.tableRow}>
+                <Text style={styles.tableCell}>Name:</Text>
+                <Text style={styles.tableCell}>{sendingInstitution.name}</Text>
+              </View>
+              <View style={styles.tableRow}>
+                <Text style={styles.tableCell}>Responsible Name:</Text>
+                <Text style={styles.tableCell}>{sendingInstitution.responsibleName}</Text>
+              </View>
+              <View style={styles.tableRow}>
+                <Text style={styles.tableCell}>Contact Email:</Text>
+                <Text style={styles.tableCell}>{sendingInstitution.contactEmail}</Text>
+              </View>
+              <View style={styles.tableRow}>
+                <Text style={styles.tableCell}>Department/Faculty:</Text>
+                <Text style={styles.tableCell}>{sendingInstitution.department}</Text>
+              </View>
             </View>
+          </View>
 
-            <View style={{ backgroundColor: "#f2f2f2", borderBottomWidth: 1, borderStyle: "solid", borderBottomColor: "#000000"}}></View>
-              {props.CourseInfo.map((course, index) => (
-                <View key={index} style={{flexDirection: "row", justifyContent: "flex-start"}}>
-                  <Text style={{ fontSize:10, textAlign: "left", width: 285}}>{course.name}</Text>
-                  <Text style={{ fontSize:10, textAlign: "left", width: 185}}>{course.code}</Text>
-                  <Text style={{ fontSize:10, textAlign: "right", width: 100}}>{course.credits}</Text>
+          {/* Receiving Institution section */}
+          <View style={styles.section}>
+            <Text style={styles.subtitle}>Receiving Institution</Text>
+            <View style={styles.table}>
+              <View style={styles.tableRow}>
+                <Text style={styles.tableCell}>Name:</Text>
+                <Text style={styles.tableCell}>{receivingInstitution.name}</Text>
+              </View>
+              <View style={styles.tableRow}>
+                <Text style={styles.tableCell}>Responsible Name:</Text>
+                <Text style={styles.tableCell}>{receivingInstitution.responsibleName}</Text>
+              </View>
+              <View style={styles.tableRow}>
+                <Text style={styles.tableCell}>Contact Email:</Text>
+                <Text style={styles.tableCell}>{receivingInstitution.contactEmail}</Text>
+              </View>
+              <View style={styles.tableRow}>
+                <Text style={styles.tableCell}>Department/Faculty:</Text>
+                <Text style={styles.tableCell}>{receivingInstitution.department}</Text>
+              </View>
+            </View>
+          </View>
+
+          {/* Courses section */}
+          <View style={styles.section}>
+            <Text style={styles.subtitle}>Courses</Text>
+            <View style={styles.courseTable}>
+              <View style={styles.tableRow}>
+                <Text style={styles.tableHeader}>Name of Course</Text>
+                <Text style={styles.tableHeader}>Code of Course</Text>
+                <Text style={styles.tableHeader}>ECTS</Text>
+              </View>
+              {CourseInfo.map((course, index) => (
+                <View key={index} style={styles.tableRow}>
+                  <Text style={styles.tableCell}>{course.name}</Text>
+                  <Text style={styles.tableCell}>{course.code}</Text>
+                  <Text style={styles.tableCell}>{course.credits}</Text>
                 </View>
               ))}
-            
             </View>
           </View>
-      </Page>
 
+          {/* Signature section */}
+          <View style={styles.signatureContainer}>
+            <View style={styles.signatureBox}>
+              <Text style={styles.signatureLabel}>Student</Text>
+              {/* Signature field for student */}
+              {/* Add any additional fields or components as necessary */}
+            </View>
+            <View style={styles.signatureBox}>
+              <Text style={styles.signatureLabel}>Sending Responsible</Text>
+              {/* Signature field for sending responsible */}
+              {/* Add any additional fields or components as necessary */}
+            </View>
+            <View style={styles.signatureBox}>
+              <Text style={styles.signatureLabel}>Receiving Responsible</Text>
+              {/* Signature field for receiving responsible */}
+              {/* Add any additional fields or components as necessary */}
+            </View>
+          </View>
+        </Page>
       </Document>
     );
-    
-    // Renvoyer le lien de téléchargement pour le PDF
+
     return (
       <PDFDownloadLink document={OLA} fileName="Learning Agreement.pdf">
-        {({ blob, url, loading, error }) =>
-          loading ? 'Loading...' : 'Download'
-        }
+        {({ blob, url, loading, error }) => (loading ? 'Loading...' : (<FolderIcon />))}
       </PDFDownloadLink>
     );
-    };
-  
-    //affichage
-    return (
-      <div>
-        {CreateLearningAgreement()}
-      </div>
-    );
-}
+  };
+
+  return (
+    <div>
+      {CreateLearningAgreement()}
+    </div>
+  );
+};
+
+export default LearningAgreement;

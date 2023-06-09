@@ -8,6 +8,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\StudentCoursesController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ForgetPasswordController;
+use App\Http\Controllers\OLAController;
+use App\Http\Controllers\OLACoursController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,7 +53,30 @@ Route::middleware(['cors'])->group(function () {
     Route::get('/courses/student/{student}',[StudentCoursesController::class, "show"]); // List courses in student cart
     Route::delete('/courses/student/{studentId}/{courseId}', [StudentCoursesController::class, "delete"]); // delete a course in student cart
 
-    Route::post('/comment',[CommentController::class,"store"]); // Add Comment
+    Route::get('/comment', [CommentController::class, "index"]); // List Students
+
+    Route::get('/commentreported', [CommentController::class, "indexReported"]); // List Students
+    Route::post('/comments', [CommentController::class, "store"]); // Create Student
+    Route::get('/comment/{comment}', [CommentController::class, "show"]); // Detail of Student
+    Route::put('/comment/{comment}', [CommentController::class, "update"]); // Update Student
+    Route::delete('/comment/{comment}', [CommentController::class, "destroy"]); // Delete Student
+    Route::put('/comment/{comment}/mark-as-unreported', [CommentController::class, "markAsUnreported"]);
+    Route::put('/comment/{comment}/mark-as-reported', [CommentController::class, "markAsreported"]);
 
     Route::post('/forgetpwd',[ForgetPasswordController::class,"store"]);
+
+
+    Route::get('olas', [OLAController::class, 'index']);
+    Route::post('olas', [OLAController::class, 'store']);
+    Route::get('olas/{id}', [OLAController::class, 'show']);
+    Route::put('olas/{id}', [OLAController::class, 'update']);
+    Route::delete('olas/{id}', [OLAController::class, 'destroy']);
+    Route::get('students/{studentId}/olas', [OLAController::class, 'getOLAsByStudent']);
+
+
+    Route::post('/ola_cours', [OLACoursController::class, 'store']);
+    Route::delete('/ola_cours/{id}', [OLACoursController::class, 'destroy']);
+
+    Route::delete('/carts/student/{studentId}', [CartController::class, 'destroyByStudentId']);
+
 });
