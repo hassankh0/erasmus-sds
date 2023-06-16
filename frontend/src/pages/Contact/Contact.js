@@ -17,7 +17,7 @@ import { PhotoIcon, UserCircleIcon } from "@heroicons/react/24/solid";
 export default function ContactPage() {
   return (
     <form
-      action="https://getform.io/f/a8438e93-8291-44c9-ae98-dc4155736a10"
+      action="https://getform.io/f/81405a6e-a37f-4820-9470-76ac0443a4d7"
       method="POST"
     >
       <div className="space-y-12">

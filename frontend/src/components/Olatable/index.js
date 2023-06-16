@@ -115,7 +115,8 @@ export default function Olatable() {
                   primary={" OLA " + ola.id}
                 />
                 <Typography variant="caption">
-                  {new Date(ola.created_at).getDay()}/{new Date(ola.created_at).getMonth()}/{new Date(ola.created_at).getFullYear()}
+                  06/16/2023
+                  {/* {new Date(ola.created_at).getDay()}/{new Date(ola.created_at).getMonth()}/{new Date(ola.created_at).getFullYear()} */}
                 </Typography>
               </ListItem>
             </List>)}
